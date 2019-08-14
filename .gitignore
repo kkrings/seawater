@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# Exported cmake compile commands
+compile_commands.json
