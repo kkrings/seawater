@@ -37,6 +37,10 @@ add_library(pyseawater
 	SHARED
 	${SEAWATER_PYBINDINGS})
 
+set_target_properties(pyseawater
+	PROPERTIES
+	PREFIX "")
+
 target_link_libraries(pyseawater
 	seawater
 	${Boost_LIBRARIES})

@@ -25,7 +25,7 @@ void RegisterSeawater();
 } // namespace python
 } // namespace seawater
 
-BOOST_PYTHON_MODULE(libpyseawater)
+BOOST_PYTHON_MODULE(pyseawater)
 {
     seawater::python::RegisterElement();
     seawater::python::RegisterMassFraction();
