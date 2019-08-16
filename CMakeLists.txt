@@ -16,6 +16,14 @@ add_library(seawater
 	SHARED
 	${SEAWATER_SOURCE_FILES})
 
+include(GNUInstallDirs)
+
+install(TARGETS seawater
+	DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+install(DIRECTORY include/seawater
+	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
 option(SEAWATER_BUILD_PYBINDINGS "compile Python bindings" OFF)
 
 if(SEAWATER_BUILD_PYBINDINGS)
