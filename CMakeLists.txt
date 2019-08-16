@@ -57,4 +57,12 @@ if(SEAWATER_BUILD_PYBINDINGS)
 	target_link_libraries(pyseawater
 		seawater
 		${Boost_LIBRARIES})
+
+	execute_process(COMMAND ${PYTHON_EXECUTABLE} -c
+		"from distutils.sysconfig import get_python_lib; print(get_python_lib())"
+		OUTPUT_VARIABLE PYTHON_SITELIB
+		OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+	install(TARGETS pyseawater
+		DESTINATION ${PYTHON_SITELIB})
 endif()
