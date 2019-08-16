@@ -16,31 +16,37 @@ add_library(seawater
 	SHARED
 	${SEAWATER_SOURCE_FILES})
 
-find_package(PythonInterp)
-find_package(PythonLibs)
+option(SEAWATER_BUILD_PYBINDINGS "compile Python bindings" OFF)
 
-find_package(Boost 1.65
-	COMPONENTS python)
+if(SEAWATER_BUILD_PYBINDINGS)
+	message("-- Compile Python bindings")
 
-include_directories(${PYTHON_INCLUDE_DIRS})
-include_directories(${Boost_INCLUDE_DIRS})
+	find_package(PythonInterp)
+	find_package(PythonLibs)
 
-set(SEAWATER_PYBINDINGS
-	src/python/element.cxx
-	src/python/massfraction.cxx
-	src/python/medium.cxx
-	src/python/module.cxx
-	src/python/numatoms.cxx
-	src/python/seawater.cxx)
+	find_package(Boost 1.65
+		COMPONENTS python)
 
-add_library(pyseawater
-	SHARED
-	${SEAWATER_PYBINDINGS})
+	include_directories(${PYTHON_INCLUDE_DIRS})
+	include_directories(${Boost_INCLUDE_DIRS})
 
-set_target_properties(pyseawater
-	PROPERTIES
-	PREFIX "")
+	set(SEAWATER_PYBINDINGS
+		src/python/element.cxx
+		src/python/massfraction.cxx
+		src/python/medium.cxx
+		src/python/module.cxx
+		src/python/numatoms.cxx
+		src/python/seawater.cxx)
 
-target_link_libraries(pyseawater
-	seawater
-	${Boost_LIBRARIES})
+	add_library(pyseawater
+		SHARED
+		${SEAWATER_PYBINDINGS})
+
+	set_target_properties(pyseawater
+		PROPERTIES
+		PREFIX "")
+
+	target_link_libraries(pyseawater
+		seawater
+		${Boost_LIBRARIES})
+endif()
