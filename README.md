@@ -68,8 +68,8 @@ via:
 import pyseawater
 
 seawater = pyseawater.seawater(salinity=35e-3)
-
 fractions = seawater.fractions()
+
 for element, fraction in fractions.items():
     print(element.symbol, fraction)
 ```
