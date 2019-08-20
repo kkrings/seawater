@@ -49,3 +49,11 @@ cmake \
   ..
 make install
 ```
+
+By default, the C++ library will not be found when importing the Python module.
+This can be fixed by appending the virtual Python environment to
+the `LD_LIBRARY_PATH`:
+
+```sh
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$VIRTUAL_ENV/lib"
+```
