@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.12)
 set(CMAKE_CXX_STANDARD 11)
 
 project(seawater)
@@ -29,13 +29,16 @@ option(SEAWATER_BUILD_PYBINDINGS "compile Python bindings" OFF)
 if(SEAWATER_BUILD_PYBINDINGS)
 	message("-- Compile Python bindings")
 
-	find_package(PythonInterp)
-	find_package(PythonLibs)
+	find_package(Python
+		COMPONENTS Interpreter Development)
 
-	find_package(Boost 1.65
-		COMPONENTS python)
+	set(BOOST_PYTHON
+		"python${Python_VERSION_MAJOR}${Python_VERSION_MINOR}")
 
-	include_directories(${PYTHON_INCLUDE_DIRS})
+	find_package(Boost 1.67
+		COMPONENTS ${BOOST_PYTHON})
+
+	include_directories(${Python_INCLUDE_DIRS})
 	include_directories(${Boost_INCLUDE_DIRS})
 
 	set(SEAWATER_PYBINDINGS
@@ -56,13 +59,8 @@ if(SEAWATER_BUILD_PYBINDINGS)
 
 	target_link_libraries(pyseawater
 		seawater
-		${Boost_LIBRARIES})
-
-	execute_process(COMMAND ${PYTHON_EXECUTABLE} -c
-		"from distutils.sysconfig import get_python_lib; print(get_python_lib())"
-		OUTPUT_VARIABLE PYTHON_SITELIB
-		OUTPUT_STRIP_TRAILING_WHITESPACE)
+		Boost::${BOOST_PYTHON})
 
 	install(TARGETS pyseawater
-		DESTINATION ${PYTHON_SITELIB})
+		DESTINATION ${Python_SITELIB})
 endif()
