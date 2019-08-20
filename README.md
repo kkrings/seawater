@@ -30,11 +30,23 @@ make
 The actual installation is done via `make install`, which install the library
 globally (usually to `/usr/local`) and requires `sudo`. A different install
 location can be specified via the `cmake` command line
-argument `-DCMAKE_INSTALL_PREFIX=...`.
+argument `-DCMAKE_INSTALL_PREFIX`.
 
-### Python bindings
+### Python bindings: *pyseawater*
 
-The C++ library can also be exported to Python by specifying the `cmake`
-command line argument `-DSEAWATER_BUILD_PYBINDINGS=ON`. The Python bindings are
-based on [Boost](https://www.boost.org/)'s `Boost.Python` library and require
-at least version 1.67.
+The C++ library can also be exported to Python by turning on the `cmake`
+option `SEAWATER_BUILD_PYBINDINGS`. The Python bindings are based
+on [Boost](https://www.boost.org/)'s *Boost.Python* library and require at
+least version 1.67.
+
+The following example shows how to add the `pyseawater` module to a dedicated
+active virtual Python environment, which was created via
+the [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/stable/):
+
+```sh
+cmake ..
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_PREFIX=$VIRTUAL_ENV
+  -DSEAWATER_BUILD_PYBINDINGS=ON
+make install
+```
