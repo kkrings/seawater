@@ -35,7 +35,7 @@ argument `-DCMAKE_INSTALL_PREFIX`.
 ### Python bindings: *pyseawater*
 
 The C++ library can also be exported to Python by turning on the `cmake`
-option `SEAWATER_BUILD_PYBINDINGS`. The Python bindings are based
+option `SEAWATER_BUILD_PYTHON_MODULE`. The Python bindings are based
 on [Boost](https://www.boost.org/)'s *Python* library and require at least
 version 1.67. The following example shows how to add the *pyseawater* module to
 a dedicated active virtual Python environment, which was created via
@@ -45,7 +45,7 @@ the [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/stable/):
 cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=$VIRTUAL_ENV \
-  -DSEAWATER_BUILD_PYBINDINGS=ON \
+  -DSEAWATER_BUILD_PYTHON_MODULE=ON \
   ..
 make install
 ```
@@ -68,8 +68,8 @@ via:
 import pyseawater
 
 seawater = pyseawater.seawater(salinity=35e-3)
-fractions = seawater.fractions()
 
+fractions = seawater.fractions()
 for element, fraction in fractions.items():
     print(element.symbol, fraction)
 ```
