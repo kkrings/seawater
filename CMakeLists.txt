@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.12)
 set(CMAKE_CXX_STANDARD 11)
 
-project(seawater)
+project(seawater
+	VERSION 0.1.0
+	DESCRIPTION "Chemical composition of seawater"
+	LANGUAGES CXX)
 
 include_directories(include)
 
