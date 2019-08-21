@@ -20,7 +20,24 @@ set_target_properties(seawater
 	CXX_EXTENSIONS OFF)
 
 install(TARGETS seawater
-	DESTINATION ${CMAKE_INSTALL_LIBDIR})
+	EXPORT SeawaterConfig
+	DESTINATION lib)
+
+install(EXPORT SeawaterConfig
+	FILE SeawaterConfig.cmake
+	NAMESPACE seawater::
+	DESTINATION lib/cmake/seawater)
+
+include(CMakePackageConfigHelpers)
+
+write_basic_package_version_file(
+	SeawaterConfigVersion.cmake
+	VERSION ${PACKAGE_VERSION}
+	COMPATIBILITY AnyNewerVersion)
+
+install(FILES
+	${CMAKE_CURRENT_BINARY_DIR}/SeawaterConfigVersion.cmake
+	DESTINATION lib/cmake/seawater)
 
 install(DIRECTORY ../include/seawater
-	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+	DESTINATION include)
