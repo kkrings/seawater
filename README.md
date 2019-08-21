@@ -40,8 +40,8 @@ your own project as shown below:
 
 ```cmake
 find_package(Seawater 0.1.0)
-add_executable(foo foo.cxx)
-target_link_libraries(foo seawater::seawater)
+add_executable(example example.cxx)
+target_link_libraries(example seawater::seawater)
 ```
 
 ### Python module: *pyseawater*
