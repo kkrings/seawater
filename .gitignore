@@ -33,3 +33,6 @@
 
 # Exported cmake compile commands
 compile_commands.json
+
+# Build directory
+build
