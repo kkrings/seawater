@@ -70,8 +70,6 @@ This can be fixed by appending the virtual Python environment to the
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$VIRTUAL_ENV/lib"
 ```
 
-## Getting started
-
 After building and installing the *pyseawater* module, the chemical composition
 (meaning the element mass fractions) of seawater can be calculated via:
 
