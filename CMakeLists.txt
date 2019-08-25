@@ -5,7 +5,7 @@ project(seawater
 	DESCRIPTION "Chemical composition of seawater"
 	LANGUAGES CXX)
 
-add_subdirectory(src)
+add_subdirectory(src lib)
 
 option(SEAWATER_BUILD_PYTHON_MODULE "compile Python module" OFF)
 
