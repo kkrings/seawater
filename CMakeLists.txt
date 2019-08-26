@@ -13,3 +13,10 @@ project(
 
 # Add seawater C++ library.
 add_subdirectory(src lib)
+
+# Add uni tests.
+include(CTest)
+
+if(BUILD_TESTING)
+	add_subdirectory(tests)
+endif()
