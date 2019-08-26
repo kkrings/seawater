@@ -52,3 +52,9 @@ call `git clone` with the command line argument `--recursive` in order to clone
 the *googletest* project into your working copy. The test executable is
 configured via the `cmake` command line argument `-DBUILD_TESTING=ON`. After
 compilation via `make`, the unit tests can be executed via `ctest`.
+
+## How to create a coverage report
+
+The custom build type `-DCMAKE_BUILD_TYPE=Coverage` is provided for creating a
+coverage report. After executing `make`, simply execute `make coverage`. This
+creates a HTML coverage report in the `coverage` subdirectory.
