@@ -28,7 +28,7 @@ target_compile_features(
 set_target_properties(
 	seawater
 	PROPERTIES
-	CXX_EXTENSIONS OFF
+		CXX_EXTENSIONS OFF
 	)
 
 # Install seawater C++ library.
