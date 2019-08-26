@@ -14,7 +14,7 @@ project(
 # Add seawater C++ library.
 add_subdirectory(src lib)
 
-# Add uni tests.
+# Add unit tests.
 include(CTest)
 
 if(BUILD_TESTING)
