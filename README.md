@@ -43,3 +43,12 @@ find_package(Seawater 0.1.0 REQUIRED)
 add_executable(example example.cxx)
 target_link_libraries(example seawater::seawater)
 ```
+
+### How to execute the provided unit tests
+
+The provided unit tests use [googletest](https://github.com/google/googletest),
+which is added as an external submodule to this project. This means you have to
+call `git clone` with the command line argument `--recursive` in order to clone
+the *googletest* project into your working copy. The test executable is
+configured via the `cmake` command line argument `-DBUILD_TESTING=ON`. After
+compilation via `make`, the unit tests can be executed via `ctest`.
