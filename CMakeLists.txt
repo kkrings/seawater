@@ -6,10 +6,3 @@ project(seawater
 	LANGUAGES CXX)
 
 add_subdirectory(src lib)
-
-option(SEAWATER_BUILD_PYTHON_MODULE "compile Python module" OFF)
-
-if(SEAWATER_BUILD_PYTHON_MODULE)
-	message("-- Compile Python module")
-	add_subdirectory(python)
-endif()
