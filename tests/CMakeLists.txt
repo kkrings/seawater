@@ -18,7 +18,7 @@ add_library(
 # Add test executable.
 add_executable(
 	test_seawater
-	main.cxx
+	test_main.cxx
 	test_element.cxx
 	)
 
