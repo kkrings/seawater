@@ -14,7 +14,7 @@ project(
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # Create coverage report.
-if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
+if(CMAKE_BUILD_TYPE STREQUAL "Coverage" AND CMAKE_COMPILER_IS_GNUCXX)
 	set(BUILD_TESTING ON)
 	include(Coverage)
 endif()
@@ -26,6 +26,6 @@ add_subdirectory(src lib)
 set(BUILD_TESTING OFF)
 include(CTest)
 
-if(BUILD_TESTING)
+if(BUILD_TESTING AND CMAKE_COMPILER_IS_GNUCXX)
 	add_subdirectory(tests)
 endif()
