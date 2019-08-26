@@ -18,7 +18,7 @@ git clone https://github.com/kkrings/seawater.git
 ```
 
 The project's compilation is based on [CMake](https://cmake.org/) and requires
-at least version 3.12:
+at least version 3.10:
 
 ```sh
 mkdir seawater/build
@@ -32,7 +32,7 @@ globally (usually to `/usr/local`) and requires `sudo`. A different install
 location can be specified via the `cmake` command line
 argument `-DCMAKE_INSTALL_PREFIX`.
 
-### How to use *seawater* library in your own project
+### How to use the *seawater* library in your own project
 
 The installation via `make install` copies the exported `seawater` target
 to `$CMAKE_INSTALL_PREFIX/lib/cmake` and the target can be included and used in
