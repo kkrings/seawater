@@ -20,6 +20,7 @@ add_executable(
 	test_seawater
 	test_main.cxx
 	test_element.cxx
+	test_mass_fraction.cxx
 	)
 
 target_link_libraries(
