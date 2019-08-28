@@ -121,8 +121,13 @@ TEST(MassFractionsTestCase, TestAddition)
         seawater::MassFractions({{oxygen, 0.5}})
         );
 
-    EXPECT_DOUBLE_EQ(fractions.at(hydrogen).GetValue(), 0.5);
-    EXPECT_DOUBLE_EQ(fractions.at(oxygen).GetValue(), 0.5);
+    auto hydrogenFraction = fractions.find(hydrogen);
+    ASSERT_NE(hydrogenFraction, std::end(fractions));
+    EXPECT_DOUBLE_EQ(hydrogenFraction->second.GetValue(), 0.5);
+
+    auto oxygenFraction = fractions.find(oxygen);
+    ASSERT_NE(oxygenFraction, std::end(fractions));
+    EXPECT_DOUBLE_EQ(oxygenFraction->second.GetValue(), 0.5);
 }
 
 /**
@@ -132,5 +137,8 @@ TEST(MassFractionsTestCase, TestMultiplication)
 {
     auto hydrogen = std::make_shared<seawater::Element>("H", 1, 1.);
     auto fractions = 2. * seawater::MassFractions({{hydrogen, 0.5}});
-    EXPECT_DOUBLE_EQ(fractions.at(hydrogen).GetValue(), 1.);
+
+    auto hydrogenFraction = fractions.find(hydrogen);
+    ASSERT_NE(hydrogenFraction, std::end(fractions));
+    EXPECT_DOUBLE_EQ(hydrogenFraction->second.GetValue(), 1.);
 }
