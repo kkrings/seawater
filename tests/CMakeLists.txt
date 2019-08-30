@@ -21,6 +21,7 @@ add_executable(
 	test_main.cxx
 	test_element.cxx
 	test_mass_fraction.cxx
+	test_numatoms.cxx
 	)
 
 target_link_libraries(
