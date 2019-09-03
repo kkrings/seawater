@@ -86,41 +86,6 @@ class Element
         ~Element() = default;
 
         /**
-         * @brief Two chemical elements compare by their charges.
-         *
-         * This operator is implemented in order to fill objects of this class
-         * into std::map.
-         *
-         * @param[in] element
-         *     Another chemical element
-         *
-         * @return
-         *     A boolean specifying if this element's charge is smaller than
-         *     the one of the other element.
-         */
-        bool operator<(const Element& element) const
-        {
-            return charge_ < element.GetCharge();
-        }
-
-        /**
-         * @brief Two chemical elements compare by their charges.
-         *
-         * The operators '<' and '>' should be provided together.
-         *
-         * @param[in] element
-         *     Another chemical element
-         *
-         * @return
-         *     A boolean specifying if this element's charge is larger than
-         *     the one of the other element.
-         */
-        bool operator>(const Element& element) const
-        {
-            return charge_ > element.GetCharge();
-        }
-
-        /**
          * Access the element's symbol.
          *
          * @return
@@ -167,6 +132,48 @@ class Element
          */
         void CheckParameters();
 };
+
+/**
+ * @brief Two chemical elements compare by their charges.
+ *
+ * This operator is implemented in order to fill objects of this class into
+ * std::map.
+ *
+ * @param[in] left
+ *     Left-hand side chemical element
+ * @param[in] right
+ *     Right-hand side chemical element
+ *
+ * @return
+ *     A boolean specifying if the charge of the element on the left-hand side
+ *     of the operator is smaller than the charge of the element on the
+ *     right-hand side of the operator.
+ */
+inline bool operator<(const Element& left, const Element& right)
+{
+    return left.GetCharge() < right.GetCharge();
+}
+
+/**
+ * @brief Two chemical elements compare by their charges.
+ *
+ * This operator is implemented in order to fill objects of this class into
+ * std::map.
+ *
+ * @param[in] left
+ *     Left-hand side chemical element
+ * @param[in] right
+ *     Right-hand side chemical element
+ *
+ * @return
+ *     A boolean specifying if the charge of the element on the left-hand side
+ *     of the operator is larger than the charge of the element on the
+ *     right-hand side of the operator.
+ */
+inline bool operator>(const Element& left, const Element& right)
+{
+    return left.GetCharge() > right.GetCharge();
+}
 
 using ElementPtr = std::shared_ptr<Element>;
 using ElementConstPtr = std::shared_ptr<const Element>;
