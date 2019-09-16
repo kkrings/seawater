@@ -23,6 +23,7 @@ add_executable(
 	test_mass_fraction.cxx
 	test_medium.cxx
 	test_numatoms.cxx
+	test_seawater.cxx
 	)
 
 target_link_libraries(
