@@ -5,7 +5,7 @@
  * (c) 2019
  * Kai Krings
  *
- * @file test_mass_fraction.cxx
+ * @file test_massfraction.cxx
  * @date 2019-08-27
  * @author Kai Krings <kai.krings@posteo.de>
  *
