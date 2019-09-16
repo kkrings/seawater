@@ -6,9 +6,13 @@
 set(CMAKE_CXX_FLAGS_COVERAGE "-fprofile-arcs -ftest-coverage")
 set(CMAKE_SHARED_LINKER_FLAGS_COVERAGE "-coverage")
 
+if(NOT Lcov_MIN_VERSION)
+	set(Lcov_MIN_VERSION 1.13)
+endif()
+
 # Find required programs.
-find_package(Lcov REQUIRED)
-find_package(Genhtml REQUIRED)
+find_package(Lcov ${Lcov_MIN_VERSION} REQUIRED)
+find_package(Genhtml ${Lcov_MIN_VERSION} REQUIRED)
 
 # Add coverage target.
 add_custom_target(

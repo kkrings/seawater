@@ -11,21 +11,22 @@ project(
 	LANGUAGES CXX
 	)
 
+# Add project's cmake modules.
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
-
-# Create coverage report.
-if(CMAKE_BUILD_TYPE STREQUAL "Coverage" AND CMAKE_COMPILER_IS_GNUCXX)
-	set(BUILD_TESTING ON)
-	include(Coverage)
-endif()
 
 # Add seawater C++ library.
 add_subdirectory(src lib)
 
-# Add unit tests (not build by default).
-set(BUILD_TESTING OFF)
+# Add support for unit test.
 include(CTest)
 
-if(BUILD_TESTING AND CMAKE_COMPILER_IS_GNUCXX)
+# Create coverage report.
+if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
+	set(BUILD_TESTING ON)
+	include(Coverage)
+endif()
+
+# Add unit tests.
+if(BUILD_TESTING)
 	add_subdirectory(tests)
 endif()
