@@ -17,8 +17,8 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 # Add seawater C++ library.
 add_subdirectory(src lib)
 
-# Add support for unit test.
-include(CTest)
+# Add support for unit tests.
+option(BUILD_TESTING "Build unit tests." OFF)
 
 # Create coverage report.
 if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
@@ -28,5 +28,6 @@ endif()
 
 # Add unit tests.
 if(BUILD_TESTING)
+	enable_testing()
 	add_subdirectory(tests)
 endif()

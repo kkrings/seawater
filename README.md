@@ -23,7 +23,7 @@ at least version 3.10:
 ```sh
 mkdir seawater/build
 cd seawater/build
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF ..
+cmake -DCMAKE_BUILD_TYPE=Release ..
 make
 ```
 
