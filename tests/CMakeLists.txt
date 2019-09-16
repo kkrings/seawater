@@ -20,7 +20,7 @@ add_executable(
 	test_seawater
 	test_main.cxx
 	test_element.cxx
-	test_mass_fraction.cxx
+	test_massfraction.cxx
 	test_medium.cxx
 	test_numatoms.cxx
 	test_seawater.cxx
