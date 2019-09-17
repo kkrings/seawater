@@ -2,7 +2,7 @@
 # Root CMakeLists.txt file
 #
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.12)
 
 project(
 	seawater
@@ -16,6 +16,7 @@ set(CMAKE_CXX_FLAGS_COVERAGE "-fprofile-arcs -ftest-coverage")
 set(CMAKE_SHARED_LINKER_FLAGS_COVERAGE "-coverage")
 
 # Add seawater C++ library.
+message("-- Configuring CXX library seawater")
 add_subdirectory(src lib)
 
 # Add support for unit tests.
@@ -30,4 +31,12 @@ endif()
 if(BUILD_TESTING)
 	enable_testing()
 	add_subdirectory(tests)
+endif()
+
+# Add pyseawater Python module.
+option(BUILD_PYMODULE "Build Python module." OFF)
+
+if(BUILD_PYMODULE)
+	message("-- Configuring Python module pyseawater")
+	add_subdirectory(python)
 endif()
