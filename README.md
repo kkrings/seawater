@@ -69,7 +69,7 @@ genhtml -o coverage coverage.info
 ### Python module: *pyseawater*
 
 The C++ library can also be exported to Python by turning on the `cmake`
-option `SEAWATER_BUILD_PYTHON_MODULE`. The Python bindings are based
+option `BUILD_PYMODULE`. The Python bindings are based
 on [Boost](https://www.boost.org/)'s *Python* library and require at least
 version 1.67. The following example shows how to add the *pyseawater* module to
 a dedicated active virtual Python environment, which was created via
@@ -79,7 +79,7 @@ the [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/stable/):
 cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=$VIRTUAL_ENV \
-  -DSEAWATER_BUILD_PYTHON_MODULE=ON \
+  -DBUILD_PYMODULE=ON \
   ..
 make install
 ```
