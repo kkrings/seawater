@@ -11,8 +11,9 @@ project(
 	LANGUAGES CXX
 	)
 
-# Add project's cmake modules.
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+# Add custom build type for creating a coverage report.
+set(CMAKE_CXX_FLAGS_COVERAGE "-fprofile-arcs -ftest-coverage")
+set(CMAKE_SHARED_LINKER_FLAGS_COVERAGE "-coverage")
 
 # Add seawater C++ library.
 add_subdirectory(src lib)
@@ -20,10 +21,9 @@ add_subdirectory(src lib)
 # Add support for unit tests.
 option(BUILD_TESTING "Build unit tests." OFF)
 
-# Create coverage report.
+# Unit tests are needed for creating a coverage report.
 if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 	set(BUILD_TESTING ON)
-	include(Coverage)
 endif()
 
 # Add unit tests.

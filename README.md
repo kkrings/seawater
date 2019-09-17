@@ -56,5 +56,12 @@ compilation via `make`, the unit tests can be executed via `ctest`.
 #### How to create a coverage report
 
 The custom build type `-DCMAKE_BUILD_TYPE=Coverage` is provided for creating a
-coverage report. After executing `make`, simply execute `make coverage`. This
-creates a HTML coverage report in the `coverage` subdirectory.
+coverage report. After executing `make`, the coverage report is created via
+
+```sh
+lcov -d . -z
+ctest
+lcov -c -d . -o test.info
+lcov -r test.info '*/tests/*' '/usr/include/*' -o coverage.info
+genhtml -o coverage coverage.info
+```
