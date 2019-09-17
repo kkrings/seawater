@@ -8,8 +8,8 @@ add_library(
 	SHARED
 	element.cxx
 	massfraction.cxx
-	medium.cxx
 	numatoms.cxx
+	medium.cxx
 	seawater.cxx
 	)
 
