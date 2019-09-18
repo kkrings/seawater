@@ -47,3 +47,18 @@ set_target_properties(
 # Discover all unit tests.
 include(GoogleTest)
 gtest_discover_tests(test_seawater)
+
+if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
+	add_custom_target(
+		coverage
+		COMMAND lcov -d . -z
+		COMMAND ctest
+		COMMAND lcov -c -d . -o test.info
+		COMMAND lcov -r test.info '*/tests/*' '/usr/include/*' -o report.info
+		COMMAND genhtml -o coverage report.info
+		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+		COMMENT "Creating coverage report"
+		)
+
+	add_dependencies(coverage test_seawater)
+endif()
