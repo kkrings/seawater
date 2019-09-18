@@ -1,6 +1,6 @@
 # Standard Seawater
 
-This project proves a small C++ library for calculating the chemical
+This project provides a small C++ library for calculating the chemical
 composition of seawater given a practical salinity. 
 
 The composition is based on the six most important (by reference salinity)
