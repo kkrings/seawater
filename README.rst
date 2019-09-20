@@ -15,7 +15,8 @@ Installation
 ------------
 
 The project's compilation is based on `CMake`_ and requires at least **version
-3.12** and a compiler that supports C++11:
+3.12** and a compiler that supports *C++11*. From within the source directory,
+run the following commands:
 
 ::
 
@@ -26,7 +27,7 @@ The project's compilation is based on `CMake`_ and requires at least **version
 
 The project is installed via ``make install``; a global installation requires
 *sudo*; a different install location can be specified via the *cmake* command
-line argument ``-DCMAKE_INSTALL_PREFIX ...``. The installation via ``make
+line argument ``-DCMAKE_INSTALL_PREFIX=...``. The installation via ``make
 install`` copies the exported *seawater* library to
 *$CMAKE_INSTALL_PREFIX/lib/cmake* and the library can be included and used in
 your own project as shown below:
