@@ -25,14 +25,14 @@ directory, run the following commands:
    cmake -DCMAKE_BUILD_TYPE=Release ..
    make
 
-The project is installed via ``make install``; a global installation requires
-*sudo*; a different install location can be specified via the *cmake* command
-line argument ``-DCMAKE_INSTALL_PREFIX=...``. The installation via ``make
-install`` copies the exported *seawater* library to
-*$CMAKE_INSTALL_PREFIX/lib/cmake* and the library can be included and used in
-your own project as shown below:
+The project is installed via ``make install``. A global installation requires
+*sudo*. A different install location can be specified via the *cmake* command
+line argument ``CMAKE_INSTALL_PREFIX``. The installation via ``make install``
+copies the exported target to the subdirectory ``lib/cmake`` under the install
+prefix and the library can be included and used in your own project as shown
+below:
 
-.. code:: cmake
+::
 
    find_package(Seawater 0.1.0 REQUIRED)
    add_executable(example example.cxx)
@@ -42,13 +42,12 @@ your own project as shown below:
 Python module
 ~~~~~~~~~~~~~
 
-The C++ library can also be exported to Python by turning on the *cmake* option
-``-BUILD_PYMODULE=ON``. The Python bindings are based on `Boost`_'s Python
-library and require at least **version 1.67**. The following example shows how
-to add the *pyseawater* module to a dedicated active virtual Python
-environment, which was created via the `virtualenvwrapper`_:
+The C++ library can also be exported to Python based on `Boost`_'s Python
+library and requires at least **version 1.67**. The following example shows how
+to add the Python module to a dedicated active virtual Python environment,
+which was created via the `virtualenvwrapper`_:
 
-.. code:: cmake
+::
 
    cmake \
       -DCMAKE_BUILD_TYPE=Release \
@@ -57,9 +56,7 @@ environment, which was created via the `virtualenvwrapper`_:
       ..
    make install
 
-By default, the C++ library will not be found when importing the Python module.
-This can be fixed by appending the virtual Python environment to the
-*$LD_LIBRARY_PATH*:
+By default, the C++ library will not be found when importing the Python module:
 
 ::
 
@@ -71,10 +68,15 @@ Unit tests
 
 The provided unit tests use `googletest`_, which is added as an external
 submodule to this project. The test executable is configured via the *cmake*
-command line argument ``-DBUILD_TESTING=ON``. After compilation via *make*, the
-unit tests can be executed via *ctest*. The custom build type
-``-DCMAKE_BUILD_TYPE=Coverage`` is provided for creating a coverage report via
-*lcov* and *genhtml*. The coverage report is created via ``make coverage``.
+command line argument ``BUILD_TESTING``. After compilation via *make*, the unit
+tests can be executed via *ctest*.
+
+
+Code coverage
+~~~~~~~~~~~~~
+
+The custom build type ``Coverage`` is provided for creating a coverage report
+via *lcov* and *genhtml*. The coverage report is created via ``make coverage``.
 
 
 .. Links
