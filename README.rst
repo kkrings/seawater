@@ -26,8 +26,8 @@ The project's compilation is based on `CMake`_ and requires at least **version
 
 The project is installed via ``make install``; a global installation requires
 *sudo*; a different install location can be specified via the *cmake* command
-line argument ``-DCMAKE_INSTALL_PREFIX ...``.
-The installation via ``make install`` copies the exported *seawater* library to
+line argument ``-DCMAKE_INSTALL_PREFIX ...``. The installation via ``make
+install`` copies the exported *seawater* library to
 *$CMAKE_INSTALL_PREFIX/lib/cmake* and the library can be included and used in
 your own project as shown below:
 
@@ -71,10 +71,9 @@ Unit tests
 The provided unit tests use `googletest`_, which is added as an external
 submodule to this project. The test executable is configured via the *cmake*
 command line argument ``-DBUILD_TESTING=ON``. After compilation via *make*, the
-unit tests can be executed via *ctest*.
-The custom build type ``-DCMAKE_BUILD_TYPE=Coverage`` is provided for creating
-a coverage report via *lcov* and *genhtml*. The coverage report is created via
-``make coverage``.
+unit tests can be executed via *ctest*. The custom build type
+``-DCMAKE_BUILD_TYPE=Coverage`` is provided for creating a coverage report via
+*lcov* and *genhtml*. The coverage report is created via ``make coverage``.
 
 
 .. Links
