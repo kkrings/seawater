@@ -15,8 +15,8 @@ Installation
 ------------
 
 The project's compilation is based on `CMake`_ and requires at least **version
-3.12** and a compiler that supports *C++11*. From within the source directory,
-run the following commands:
+3.12** and a compiler that supports **C++11**. From within the source
+directory, run the following commands:
 
 ::
 
