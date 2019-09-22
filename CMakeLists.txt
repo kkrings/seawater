@@ -40,3 +40,11 @@ if(BUILD_PYMODULE)
 	message("-- Configuring Python module pyseawater")
 	add_subdirectory(src/pyseawater pyseawater)
 endif()
+
+# Add documentation.
+option(BUILD_DOCS "Configure documentation." OFF)
+
+if(BUILD_DOCS)
+	message("-- Configuring documentation")
+	add_subdirectory(src/docs docs)
+endif()
