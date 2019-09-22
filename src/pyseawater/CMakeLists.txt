@@ -14,6 +14,7 @@ set(
 
 find_package(
 	Boost 1.67
+	REQUIRED
 	COMPONENTS ${BOOST_PYTHON}
 	)
 
