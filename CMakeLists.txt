@@ -16,11 +16,11 @@ set(CMAKE_CXX_FLAGS_COVERAGE "-fprofile-arcs -ftest-coverage")
 set(CMAKE_SHARED_LINKER_FLAGS_COVERAGE "-coverage")
 
 # Add seawater C++ library.
-message("-- Configuring CXX library seawater")
+message("-- Configuring libseawater")
 add_subdirectory(src/seawater seawater)
 
 # Add support for unit tests.
-option(BUILD_TESTING "Build unit tests." OFF)
+option(BUILD_TESTING "Configure unit tests." OFF)
 
 # Unit tests are needed for creating a coverage report.
 if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
@@ -30,14 +30,15 @@ endif()
 # Add unit tests.
 if(BUILD_TESTING)
 	enable_testing()
+	message("-- Configuring unit tests")
 	add_subdirectory(src/tests tests)
 endif()
 
 # Add pyseawater Python module.
-option(BUILD_PYMODULE "Build Python module." OFF)
+option(BUILD_PYMODULE "Configure Python module." OFF)
 
 if(BUILD_PYMODULE)
-	message("-- Configuring Python module pyseawater")
+	message("-- Configuring pyseawater")
 	add_subdirectory(src/pyseawater pyseawater)
 endif()
 
