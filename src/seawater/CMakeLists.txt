@@ -16,7 +16,7 @@ add_library(
 target_include_directories(
 	seawater
 	PUBLIC
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../../include>
 		$<INSTALL_INTERFACE:include>
 	)
 
@@ -39,7 +39,7 @@ install(
 	)
 
 install(
-	DIRECTORY ../include/seawater
+	DIRECTORY ../../include/seawater
 	DESTINATION include
 	)
 
