@@ -15,3 +15,13 @@ doxygen_add_docs(
 	${PROJECT_SOURCE_DIR}/include
 	COMMENT "Generating Doxygen XML output"
 	)
+
+set(
+	DOXYGEN_XML_OUTPUT_DIRECTORY
+	"${CMAKE_CURRENT_BINARY_DIR}/xml"
+	)
+
+configure_file(
+	conf.py.in
+	conf.py
+	)
