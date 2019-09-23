@@ -13,7 +13,7 @@ These materials are sodium, magnesium, calcium, potassium, chlorine, and
 sulfate ions.
 
 .. documentation stop
-More details are given in the project's `documentation_`.
+More details are given in the project's `documentation`_.
 
 
 .. Links
