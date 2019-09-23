@@ -34,14 +34,14 @@ target_include_directories(
 	pyseawater
 	PRIVATE
 		${CMAKE_CURRENT_SOURCE_DIR}
-		${Python_INCLUDE_DIR}
-		${Boost_INCLUDE_DIRS}
 	)
 
 target_link_libraries(
 	pyseawater
 	PRIVATE
 		seawater
+		Python::Python
+		Boost::boost
 		Boost::${BOOST_PYTHON}
 	)
 
