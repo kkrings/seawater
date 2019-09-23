@@ -25,6 +25,7 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -34,7 +35,8 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -78,20 +80,14 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Standard Seawater</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a><ul>
-<li><a class="reference internal" href="#python-module">Python module</a></li>
-<li><a class="reference internal" href="#unit-tests">Unit tests</a></li>
-<li><a class="reference internal" href="#code-coverage">Code coverage</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seawater.html">C++ library reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyseawater.html">Python module reference</a></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
-</div>
+
             
           
         </div>
@@ -163,61 +159,14 @@ materials dissolved in <em>Standard Seawater</em>, according to F. J. Millero et
 Deep Sea Research Part I: Oceanographic Research Papers 55.1 (2008), pp. 50-72.
 These materials are sodium, magnesium, calcium, potassium, chlorine, and
 sulfate ions.</p>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>The project’s compilation is based on <a class="reference external" href="https://cmake.org/">CMake</a> and requires at least <strong>version
-3.12</strong> and a compiler that supports <strong>C++11</strong>. From within the source
-directory, run the following commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
-<span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
-<span class="n">make</span>
-</pre></div>
-</div>
-<p>The project is installed via <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code>. A global installation requires
-<em>sudo</em>. A different install location can be specified via the <em>cmake</em> command
-line argument <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code>. The installation via <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code>
-copies the exported target to the subdirectory <code class="docutils literal notranslate"><span class="pre">lib/cmake</span></code> under the install
-prefix and the library can be included and used in your own project as shown
-below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find_package</span><span class="p">(</span><span class="n">Seawater</span> <span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span> <span class="n">REQUIRED</span><span class="p">)</span>
-<span class="n">add_executable</span><span class="p">(</span><span class="n">example</span> <span class="n">example</span><span class="o">.</span><span class="n">cxx</span><span class="p">)</span>
-<span class="n">target_link_libraries</span><span class="p">(</span><span class="n">example</span> <span class="n">seawater</span><span class="p">::</span><span class="n">seawater</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="section" id="python-module">
-<h3>Python module<a class="headerlink" href="#python-module" title="Permalink to this headline">¶</a></h3>
-<p>The C++ library can also be exported to Python based on <a class="reference external" href="https://www.boost.org/">Boost</a>’s Python
-library and requires at least <strong>version 1.67</strong>. The following example shows how
-to add the Python module to a dedicated active virtual Python environment,
-which was created via the <a class="reference external" href="https://virtualenvwrapper.readthedocs.io/en/stable/">virtualenvwrapper</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cmake \
-   -DCMAKE_BUILD_TYPE=Release \
-   -DCMAKE_INSTALL_PREFIX=$VIRTUAL_ENV \
-   -DBUILD_PYMODULE=ON \
-   ..
-make install
-</pre></div>
-</div>
-<p>By default, the C++ library will not be found when importing the Python module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;$LD_LIBRARY_PATH:$VIRTUAL_ENV/lib&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="unit-tests">
-<h3>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h3>
-<p>The provided unit tests use <a class="reference external" href="https://github.com/google/googletest/">googletest</a>, which is added as an external
-submodule to this project. The test executable is configured via the <em>cmake</em>
-command line argument <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code>. After compilation via <em>make</em>, the unit
-tests can be executed via <em>ctest</em>.</p>
-</div>
-<div class="section" id="code-coverage">
-<h3>Code coverage<a class="headerlink" href="#code-coverage" title="Permalink to this headline">¶</a></h3>
-<p>The custom build type <code class="docutils literal notranslate"><span class="pre">Coverage</span></code> is provided for creating a coverage report
-via <em>lcov</em> and <em>genhtml</em>. The coverage report is created via <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">coverage</span></code>.</p>
 <div class="toctree-wrapper compound">
-</div>
-</div>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seawater.html">C++ library reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyseawater.html">Python module reference</a></li>
+</ul>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -234,6 +183,13 @@ via <em>lcov</em> and <em>genhtml</em>. The coverage report is created via <code
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
   
 
   <hr/>
