@@ -12,7 +12,7 @@
  */
 #pragma once
 
-#include "medium.h"
+#include "seawater/medium.h"
 
 namespace seawater {
 

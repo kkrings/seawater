@@ -12,11 +12,7 @@
  */
 #pragma once
 
-#include <map>
-#include <sstream>
-#include <stdexcept>
-
-#include "massfraction.h"
+#include "seawater/massfraction.h"
 
 namespace seawater {
 

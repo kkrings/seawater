@@ -23,9 +23,7 @@ namespace python {
 // register NumAtoms class
 void RegisterNumAtoms()
 {
-    bp::class_<
-        NumAtoms
-    >
+    bp::class_<NumAtoms>
     {
         "NumAtoms",
         "Number of atoms\n"

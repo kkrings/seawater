@@ -55,7 +55,7 @@ std::shared_ptr<MapElementAmount> FromDict(const bp::dict& elementDict)
     {
         bp::tuple item = bp::extract<bp::tuple>(items[i]);
 
-        ElementConstPtr element = bp::extract<ElementConstPtr>(item[0]);
+        Element element = bp::extract<Element>(item[0]);
 
         bp::extract<Amount&> value{item[1]};
         if (value.check())

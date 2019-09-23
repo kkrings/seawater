@@ -66,6 +66,5 @@ void RegisterSeawater()
     );
 }
 
-
 } // namespace seawater
 } // namespace straw

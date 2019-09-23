@@ -10,7 +10,6 @@
  * @author Kai Krings <kai.krings@posteo.de>
  *
  */
-#include <memory>
 #include <stdexcept>
 
 #include <gtest/gtest.h>
@@ -24,8 +23,8 @@
  */
 TEST(MediumTestCase, TestInit)
 {
-    auto hydrogen = std::make_shared<const seawater::Element>("H", 1, 1.);
-    auto oxygen = std::make_shared<const seawater::Element>("O", 8, 16.);
+    seawater::Element hydrogen{"H", 1, 1.};
+    seawater::Element oxygen{"O", 8, 16.};
 
     auto reference = seawater::GetMassFractions({{hydrogen, 2}, {oxygen, 1}});
     seawater::Medium water{reference, 1.};
@@ -57,8 +56,8 @@ TEST(MediumTestCase, TestInit)
  */
 TEST(MediumTestCase, TestExceptionInit)
 {
-    auto hydrogen = std::make_shared<const seawater::Element>("H", 1, 1.);
-    auto oxygen = std::make_shared<const seawater::Element>("O", 8, 16.);
+    seawater::Element hydrogen{"H", 1, 1.};
+    seawater::Element oxygen{"O", 8, 16.};
 
     EXPECT_THROW(
         seawater::Medium({{hydrogen, 0.4}, {oxygen, 0.4}}, 1.),

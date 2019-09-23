@@ -10,7 +10,6 @@
  * @author Kai Krings <kai.krings@posteo.de>
  *
  */
-#include <memory>
 #include <stdexcept>
 
 #include <gtest/gtest.h>
@@ -88,38 +87,20 @@ TEST(MassFractionTestCase, TestExceptionTooLargeValueSetter)
 }
 
 /**
- * Test addition assignment of two mass fractions.
- */
-TEST(MassFractionTestCase, TestAdditionAssignment)
-{
-    seawater::MassFraction fraction{0.25};
-    fraction += seawater::MassFraction{0.25};
-    EXPECT_DOUBLE_EQ(fraction.GetValue(), 0.5);
-}
-
-/**
- * Test multiplication assignment of scale and mass fraction.
- */
-TEST(MassFractionTestCase, TestMultiplicationAssignment)
-{
-    seawater::MassFraction fraction{0.25};
-    fraction *= 2.;
-    EXPECT_DOUBLE_EQ(fraction.GetValue(), 0.5);
-}
-
-/**
  * Test addition of two element to mass fraction maps.
  */
 TEST(MassFractionsTestCase, TestAddition)
 {
-    auto hydrogen = std::make_shared<seawater::Element>("H", 1, 1.);
-    auto oxygen = std::make_shared<seawater::Element>("O", 8, 16.);
+    seawater::Element hydrogen{"H", 1, 1.};
+    seawater::Element oxygen{"O", 8, 16.};
 
     auto fractions = (
         seawater::MassFractions({{hydrogen, 0.25}}) +
         seawater::MassFractions({{hydrogen, 0.25}}) +
         seawater::MassFractions({{oxygen, 0.5}})
         );
+
+    EXPECT_EQ(fractions.size(), 2);
 
     auto hydrogenFraction = fractions.find(hydrogen);
     ASSERT_NE(hydrogenFraction, std::end(fractions));
@@ -135,8 +116,10 @@ TEST(MassFractionsTestCase, TestAddition)
  */
 TEST(MassFractionsTestCase, TestMultiplication)
 {
-    auto hydrogen = std::make_shared<seawater::Element>("H", 1, 1.);
+    seawater::Element hydrogen{"H", 1, 1.};
     auto fractions = 2. * seawater::MassFractions({{hydrogen, 0.5}});
+
+    EXPECT_EQ(fractions.size(), 1);
 
     auto hydrogenFraction = fractions.find(hydrogen);
     ASSERT_NE(hydrogenFraction, std::end(fractions));

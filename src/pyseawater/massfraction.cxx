@@ -23,9 +23,7 @@ namespace python {
 // register MassFraction class
 void RegisterMassFraction()
 {
-    bp::class_<
-        MassFraction
-    >
+    bp::class_<MassFraction>
     {
         "MassFraction",
         "Mass fraction\n"

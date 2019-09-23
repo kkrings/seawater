@@ -14,8 +14,8 @@
 
 #include <map>
 
-#include "element.h"
-#include "massfraction.h"
+#include "seawater/element.h"
+#include "seawater/massfraction.h"
 
 namespace seawater {
 
@@ -83,7 +83,7 @@ class NumAtoms
 //---Molecule------------------------------------------------------------------
 
 /// A molecule is represented by an element to number of atoms map.
-using Molecule = std::map<ElementConstPtr, NumAtoms>;
+using Molecule = std::map<Element, NumAtoms>;
 
 /**
  * @brief Atomic weight

@@ -13,7 +13,6 @@
 #pragma once
 
 #include <map>
-#include <memory>
 #include <string>
 
 namespace seawater {
@@ -72,13 +71,13 @@ class Element
 
         /// This class is not default constructable.
         Element() = delete;
-        /// This class is not copy constructable.
-        Element(const Element&) = delete;
+        /// This class uses the default copy constructor.
+        Element(const Element&) = default;
         /// This class uses the default move constructor.
         Element(Element&&) = default;
 
-        /// This class is not copy assignable.
-        Element& operator=(const Element&) = delete;
+        /// This class uses the default copy assign operator.
+        Element& operator=(const Element&) = default;
         /// This class uses the default move assign operator.
         Element& operator=(Element&&) = default;
 
@@ -174,10 +173,5 @@ inline bool operator>(const Element& left, const Element& right)
 {
     return left.GetCharge() > right.GetCharge();
 }
-
-/// Shared pointer to element
-using ElementPtr = std::shared_ptr<Element>;
-/// Shared pointer to constant element
-using ElementConstPtr = std::shared_ptr<const Element>;
 
 } // namespace seawater

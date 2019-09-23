@@ -23,11 +23,7 @@ namespace python {
 // register Element class
 void RegisterElement()
 {
-    bp::class_<
-        Element,
-        ElementPtr,
-        boost::noncopyable
-    >
+    bp::class_<Element>
     {
         "Element",
         "Chemical element\n"
@@ -77,21 +73,10 @@ void RegisterElement()
     )
     .def(
         bp::self < bp::self
-        // "__lt__",
-        // &Element::operator<,
-        // bp::args("self", "element"),
-        // "Two chemical elements compare by their charges."
     )
     .def(
         bp::self > bp::self
-        // "__gt__",
-        // &Element::operator>,
-        // bp::args("self", "element"),
-        // "Two chemical elements compare by their charges."
     );
-
-    bp::implicitly_convertible<ElementPtr, ElementConstPtr>();
-    bp::register_ptr_to_python<ElementConstPtr>();
 }
 
 } // namespace python

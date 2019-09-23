@@ -16,6 +16,8 @@
 #include <sstream>
 #include <stdexcept>
 
+#include "seawater/massfraction.h"
+
 namespace {
 
 void CheckTotalFraction(const seawater::MassFractions& fractions)

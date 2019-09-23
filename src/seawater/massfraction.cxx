@@ -43,7 +43,12 @@ seawater::MassFractions& seawater::operator+=(
 
         if (contained != std::end(left))
         {
-            contained->second += fraction.second;
+            double value = (
+                contained->second.GetValue() +
+                fraction.second.GetValue()
+                );
+
+            contained->second.SetValue(value);
         }
         else
         {
@@ -59,7 +64,7 @@ seawater::MassFractions& seawater::operator*=(
 {
     for (auto& fraction : fractions)
     {
-        fraction.second *= scale;
+        fraction.second.SetValue(fraction.second.GetValue() * scale);
     }
 
     return fractions;

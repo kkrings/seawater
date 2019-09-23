@@ -12,10 +12,8 @@
  */
 #include "seawater/element.h"
 
-#include <memory>
 #include <sstream>
 #include <stdexcept>
-#include <string>
 
 void seawater::Element::CheckParameters()
 {

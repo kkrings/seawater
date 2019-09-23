@@ -10,8 +10,6 @@
  * @author Kai Krings <kai.krings@posteo.de>
  *
  */
-#include <memory>
-
 #include <gtest/gtest.h>
 
 #include "seawater/element.h"
@@ -47,13 +45,13 @@ TEST(NumAtomsTestCase, TestExceptionValueInit)
  */
 TEST(MoleculeTestCase, TestGetWeight)
 {
-    auto hydrogen = std::make_shared<const seawater::Element>("H", 1, 1.);
+    seawater::Element hydrogen{"H", 1, 1.};
 
     EXPECT_DOUBLE_EQ(
-        seawater::GetWeight({{hydrogen, 1}}), hydrogen->GetWeight());
+        seawater::GetWeight({{hydrogen, 1}}), hydrogen.GetWeight());
 
     EXPECT_DOUBLE_EQ(
-        seawater::GetWeight({{hydrogen, 2}}), 2.*hydrogen->GetWeight());
+        seawater::GetWeight({{hydrogen, 2}}), 2.*hydrogen.GetWeight());
 }
 
 /**
@@ -61,7 +59,7 @@ TEST(MoleculeTestCase, TestGetWeight)
  */
 TEST(MoleculeTestCase, TestMultiplicaton)
 {
-    auto hydrogen = std::make_shared<const seawater::Element>("H", 1, 1.);
+    seawater::Element hydrogen{"H", 1, 1.};
 
     auto fractions = 1. * seawater::Molecule{{{hydrogen, 2}}};
     EXPECT_EQ(fractions.size(), 1);

@@ -15,6 +15,8 @@
 #include <sstream>
 #include <stdexcept>
 
+#include "seawater/massfraction.h"
+
 seawater::NumAtoms::NumAtoms(int value)
     : value_{value}
 {
@@ -38,7 +40,7 @@ double seawater::GetWeight(const seawater::Molecule& molecule)
 
     for (const auto& atom : molecule)
     {
-        weight += atom.second.GetValue() * atom.first->GetWeight();
+        weight += atom.second.GetValue() * atom.first.GetWeight();
     }
 
     return weight;
@@ -54,7 +56,7 @@ seawater::MassFractions seawater::GetMassFractions(
     {
         fractions.emplace(
             atom.first,
-            atom.second.GetValue() * atom.first->GetWeight() / weight);
+            atom.second.GetValue() * atom.first.GetWeight() / weight);
     }
 
     return fractions;

@@ -22,11 +22,11 @@ TEST(SeawaterTestCase, TestGetSeawater)
 {
     auto water = seawater::GetSeaWater(35e-3);
     auto waterFractions = water.GetMassFractions();
-    ASSERT_EQ(waterFractions.cbegin()->first->GetSymbol(), "H");
+    ASSERT_EQ(waterFractions.cbegin()->first.GetSymbol(), "H");
 
     auto moreSalt = seawater::GetSeaWater(36e-3);
     auto moreSaltFractions = moreSalt.GetMassFractions();
-    ASSERT_EQ(moreSaltFractions.cbegin()->first->GetSymbol(), "H");
+    ASSERT_EQ(moreSaltFractions.cbegin()->first.GetSymbol(), "H");
 
     EXPECT_GT(
         waterFractions.cbegin()->second.GetValue(),
@@ -34,7 +34,7 @@ TEST(SeawaterTestCase, TestGetSeawater)
 
     auto lessSalt = seawater::GetSeaWater(34e-3);
     auto lessSaltFractions = lessSalt.GetMassFractions();
-    ASSERT_EQ(lessSaltFractions.cbegin()->first->GetSymbol(), "H");
+    ASSERT_EQ(lessSaltFractions.cbegin()->first.GetSymbol(), "H");
 
     EXPECT_LT(
         waterFractions.cbegin()->second.GetValue(),
