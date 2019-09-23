@@ -23,7 +23,8 @@ elements Standard Seawater consists of, using the project's Python interface:
    fractions = seawater.fractions()
 
    for (element, fraction) in fractions.items():
-      print("Element {}: mass fraction = {}".format(element.symbol, fraction)
+       print("Element {:2}: mass fraction = {:8.4%}".format(
+           element.symbol, fraction))
 
 
 .. documentation stop

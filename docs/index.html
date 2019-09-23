@@ -167,7 +167,8 @@ elements Standard Seawater consists of, using the project’s Python interface:<
 <span class="n">fractions</span> <span class="o">=</span> <span class="n">seawater</span><span class="o">.</span><span class="n">fractions</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">fraction</span><span class="p">)</span> <span class="ow">in</span> <span class="n">fractions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Element {}: mass fraction = {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">fraction</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Element {:2}: mass fraction = {:8.4%}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">element</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">fraction</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
