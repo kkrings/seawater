@@ -175,7 +175,9 @@ inline bool operator>(const Element& left, const Element& right)
     return left.GetCharge() > right.GetCharge();
 }
 
+/// Shared pointer to element
 using ElementPtr = std::shared_ptr<Element>;
+/// Shared pointer to constant element
 using ElementConstPtr = std::shared_ptr<const Element>;
 
 } // namespace seawater
