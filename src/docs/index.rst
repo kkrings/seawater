@@ -1,10 +1,17 @@
 .. seawater documentation master file
 
 .. include:: ../../README.rst
+   :start-after: documentation start
+   :end-before: documentation stop
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
+
+   install
+   develop
+   seawater
+   pyseawater
 
 
 Indices and tables
