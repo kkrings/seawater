@@ -31,27 +31,6 @@ set_target_properties(
 		CXX_EXTENSIONS OFF
 	)
 
-add_executable(
-	example
-	example.cxx
-	)
-
-target_link_libraries(
-	example
-	seawater
-	)
-
-target_compile_features(
-	example
-	PUBLIC cxx_std_11
-	)
-
-set_target_properties(
-	example
-	PROPERTIES
-		CXX_EXTENSIONS OFF
-	)
-
 # Install seawater C++ library.
 install(
 	TARGETS seawater
