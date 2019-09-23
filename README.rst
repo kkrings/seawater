@@ -1,3 +1,5 @@
+.. documentation start
+
 Standard Seawater
 =================
 
@@ -10,84 +12,10 @@ Deep Sea Research Part I: Oceanographic Research Papers 55.1 (2008), pp. 50-72.
 These materials are sodium, magnesium, calcium, potassium, chlorine, and
 sulfate ions.
 
-
-Installation
-------------
-
-The project's compilation is based on `CMake`_ and requires at least **version
-3.12** and a compiler that supports **C++11**. From within the source
-directory, run the following commands:
-
-::
-
-   mkdir build
-   cd build
-   cmake -DCMAKE_BUILD_TYPE=Release ..
-   make
-
-The project is installed via ``make install``. A global installation requires
-*sudo*. A different install location can be specified via the *cmake* command
-line argument ``CMAKE_INSTALL_PREFIX``. The installation via ``make install``
-copies the exported target to the subdirectory ``lib/cmake`` under the install
-prefix and the library can be included and used in your own project as shown
-below:
-
-::
-
-   find_package(Seawater 0.1.0 REQUIRED)
-   add_executable(example example.cxx)
-   target_link_libraries(example seawater::seawater)
-
-
-Python module
-~~~~~~~~~~~~~
-
-The C++ library can also be exported to Python based on `Boost`_'s Python
-library and requires at least **version 1.67**. The following example shows how
-to add the Python module to a dedicated active virtual Python environment,
-which was created via the `virtualenvwrapper`_:
-
-::
-
-   cmake \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=$VIRTUAL_ENV \
-      -DBUILD_PYMODULE=ON \
-      ..
-   make install
-
-By default, the C++ library will not be found when importing the Python module:
-
-::
-
-   export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$VIRTUAL_ENV/lib"
-
-
-Unit tests
-~~~~~~~~~~
-
-The provided unit tests use `googletest`_, which is added as an external
-submodule to this project. The test executable is configured via the *cmake*
-command line argument ``BUILD_TESTING``. After compilation via *make*, the unit
-tests can be executed via *ctest*.
-
-
-Code coverage
-~~~~~~~~~~~~~
-
-The custom build type ``Coverage`` is provided for creating a coverage report
-via *lcov* and *genhtml*. The coverage report is created via ``make coverage``.
+.. documentation stop
+More details are given in the project's `documentation_`.
 
 
 .. Links
-.. _CMake:
-   https://cmake.org/
-
-.. _Boost:
-   https://www.boost.org/
-
-.. _virtualenvwrapper:
-   https://virtualenvwrapper.readthedocs.io/en/stable/
-
-.. _googletest:
-   https://github.com/google/googletest/
+.. _documentation:
+   https://kkrings.github.io/seawater/
