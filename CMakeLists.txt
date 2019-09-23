@@ -15,37 +15,40 @@ project(
 set(CMAKE_CXX_FLAGS_COVERAGE "-fprofile-arcs -ftest-coverage")
 set(CMAKE_SHARED_LINKER_FLAGS_COVERAGE "-coverage")
 
+# Add configure options.
+option(BUILD_PYMODULE "Configure Python module." OFF)
+option(BUILD_TESTS "Configure unit tests." OFF)
+option(BUILD_DOCS "Configure documentation." OFF)
+
+# Unit tests are needed for generating coverage reports.
+if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
+	set(BUILD_TESTS ON)
+endif()
+
+# Python module is needed for generating docs.
+if(BUILD_DOCS)
+	set(BUILD_PYMODULE ON)
+endif()
+
 # Add seawater C++ library.
 message("-- Configuring libseawater")
 add_subdirectory(src/seawater seawater)
 
-# Add support for unit tests.
-option(BUILD_TESTING "Configure unit tests." OFF)
-
-# Unit tests are needed for creating a coverage report.
-if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
-	set(BUILD_TESTING ON)
-endif()
-
-# Add unit tests.
-if(BUILD_TESTING)
-	enable_testing()
-	message("-- Configuring unit tests")
-	add_subdirectory(src/tests tests)
-endif()
-
 # Add pyseawater Python module.
-option(BUILD_PYMODULE "Configure Python module." OFF)
-
 if(BUILD_PYMODULE)
 	message("-- Configuring pyseawater")
 	add_subdirectory(src/pyseawater pyseawater)
 endif()
 
-# Add documentation.
-option(BUILD_DOCS "Configure documentation." OFF)
+# Add unit tests.
+if(BUILD_TESTS)
+	enable_testing()
+	message("-- Configuring unit tests")
+	add_subdirectory(src/tests tests)
+endif()
 
+# Add docs.
 if(BUILD_DOCS)
-	message("-- Configuring documentation")
+	message("-- Configuring docs")
 	add_subdirectory(src/docs docs)
 endif()
