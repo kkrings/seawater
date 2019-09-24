@@ -20,8 +20,3 @@ configure_file(
 	conf.py.in
 	conf.py
 	)
-
-file(
-	MAKE_DIRECTORY
-	"${CMAKE_CURRENT_BINARY_DIR}/html"
-	)
