@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Python module reference &#8212; seawater 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="C++ library reference" href="seawater.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="seawater.html" title="C++ library reference"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">seawater 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pyseawater">
+<span id="python-module-reference"></span><h1>Python module reference<a class="headerlink" href="#module-pyseawater" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pyseawater.Element">
+<em class="property">class </em><code class="sig-prename descclassname">pyseawater.</code><code class="sig-name descname">Element</code><a class="headerlink" href="#pyseawater.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chemical element</p>
+<p>This class represents a chemical element, which has a specific
+atomic charge and weight. Each element is identified by a specific
+symbol.</p>
+<dl class="method">
+<dt id="pyseawater.Element.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">(object)self</em>, <em class="sig-param">(str)symbol</em>, <em class="sig-param">(int)charge</em>, <em class="sig-param">(float)weight</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#pyseawater.Element.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a new element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> (<em>string</em>) – Element’s symbol</p></li>
+<li><p><strong>charge</strong> (<em>int</em>) – Element’s atomic charge</p></li>
+<li><p><strong>weight</strong> (<em>float</em>) – Element’s atomic weight</p></li>
+<li><p><strong>signature</strong> (<em>C++</em>) – void __init__(_object*,std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,int,double)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyseawater.Element.charge">
+<em class="property">property </em><code class="sig-name descname">charge</code><a class="headerlink" href="#pyseawater.Element.charge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Atomic charge Z</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyseawater.Element.symbol">
+<em class="property">property </em><code class="sig-name descname">symbol</code><a class="headerlink" href="#pyseawater.Element.symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symbol representing the chemical element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyseawater.Element.weight">
+<em class="property">property </em><code class="sig-name descname">weight</code><a class="headerlink" href="#pyseawater.Element.weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Atomic weight A</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyseawater.MassFraction">
+<em class="property">class </em><code class="sig-prename descclassname">pyseawater.</code><code class="sig-name descname">MassFraction</code><a class="headerlink" href="#pyseawater.MassFraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mass fraction</p>
+<p>This class represents the mass fraction of either a substance or a
+chemical element within a mixture.</p>
+<dl class="method">
+<dt id="pyseawater.MassFraction.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">(object)self</em><span class="optional">[</span>, <em class="sig-param">(float)value=1.0</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#pyseawater.MassFraction.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct new mass fraction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – Mass fraction</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If <cite>value</cite> is not in the range <code class="docutils literal notranslate"><span class="pre">(min_value,</span> <span class="pre">max_value]</span></code>.</p></li>
+<li><p><strong>C++ signature :</strong> – void __init__(_object* [,double=1.0])</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyseawater.MassFraction.value">
+<em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#pyseawater.MassFraction.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mass fraction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyseawater.MassFractions">
+<em class="property">class </em><code class="sig-prename descclassname">pyseawater.</code><code class="sig-name descname">MassFractions</code><a class="headerlink" href="#pyseawater.MassFractions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapping of chemical elements to mass fractions</p>
+<dl class="method">
+<dt id="pyseawater.MassFractions.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">(object)arg1</em>, <em class="sig-param">(dict)fractions</em><span class="sig-paren">)</span> &#x2192; object :<a class="headerlink" href="#pyseawater.MassFractions.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert <cite>fractions</cite> into element to mass fraction map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fractions</strong> (<em>Dict</em><em>[</em><a class="reference internal" href="#pyseawater.Element" title="pyseawater.Element"><em>Element</em></a><em>, </em><a class="reference internal" href="#pyseawater.MassFraction" title="pyseawater.MassFraction"><em>MassFraction</em></a><em>]</em>) – Mapping of chemical elements to mass fractions; values should
+be of type <cite>MassFraction</cite> or <cite>float</cite>.</p></li>
+<li><p><strong>signature</strong> (<em>C++</em>) – void* __init__(boost::python::api::object,boost::python::dict)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyseawater.Medium">
+<em class="property">class </em><code class="sig-prename descclassname">pyseawater.</code><code class="sig-name descname">Medium</code><a class="headerlink" href="#pyseawater.Medium" title="Permalink to this definition">¶</a></dt>
+<dd><p>Propagation medium</p>
+<p>This class represents a particle propagation medium. The medium’s
+components are a mapping of the chemical elements within the medium
+to their corresponding mass fractions.</p>
+<dl class="method">
+<dt id="pyseawater.Medium.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">(object)self</em>, <em class="sig-param">(MassFractions)fractions</em>, <em class="sig-param">(float)density</em><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#pyseawater.Medium.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct new medium.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fractions</strong> (<a class="reference internal" href="#pyseawater.MassFractions" title="pyseawater.MassFractions"><em>MassFractions</em></a>) – Mapping of chemical elements to mass fractions</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – Mass density in g/cm3</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the sum of <cite>fractions</cite> is not equal to 1.</p></li>
+<li><p><strong>C++ signature :</strong> – void __init__(_object*,std::map&lt;seawater::Element, seawater::MassFraction, std::less&lt;seawater::Element&gt;, std::allocator&lt;std::pair&lt;seawater::Element const, seawater::MassFraction&gt; &gt; &gt;,double)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyseawater.Medium.density">
+<em class="property">property </em><code class="sig-name descname">density</code><a class="headerlink" href="#pyseawater.Medium.density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mass density</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Mass density in g/cm3</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyseawater.Medium.fractions">
+<code class="sig-name descname">fractions</code><span class="sig-paren">(</span><em class="sig-param">(Medium)self</em><span class="sig-paren">)</span> &#x2192; dict :<a class="headerlink" href="#pyseawater.Medium.fractions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element mass fractions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>Dict[Element, float]</em> – Mapping of the chemical elements the medium consists of to
+their corresponding mass fractions</p></li>
+<li><p><em>C++ signature</em> – boost::python::dict fractions(seawater::Medium)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyseawater.Molecule">
+<em class="property">class </em><code class="sig-prename descclassname">pyseawater.</code><code class="sig-name descname">Molecule</code><a class="headerlink" href="#pyseawater.Molecule" title="Permalink to this definition">¶</a></dt>
+<dd><p>A molecule is represented by an element to number of atoms map.</p>
+<dl class="method">
+<dt id="pyseawater.Molecule.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">(object)arg1</em>, <em class="sig-param">(dict)atoms</em><span class="sig-paren">)</span> &#x2192; object :<a class="headerlink" href="#pyseawater.Molecule.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert <cite>atoms</cite> into element to number of atoms map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>atoms</strong> (<em>Dict</em><em>[</em><a class="reference internal" href="#pyseawater.Element" title="pyseawater.Element"><em>Element</em></a><em>, </em><a class="reference internal" href="#pyseawater.NumAtoms" title="pyseawater.NumAtoms"><em>NumAtoms</em></a><em>]</em>) – Mapping of chemical elements to number of atoms; values should
+be of type <cite>NumAtoms</cite> or <cite>int</cite>.</p></li>
+<li><p><strong>signature</strong> (<em>C++</em>) – void* __init__(boost::python::api::object,boost::python::dict)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyseawater.NumAtoms">
+<em class="property">class </em><code class="sig-prename descclassname">pyseawater.</code><code class="sig-name descname">NumAtoms</code><a class="headerlink" href="#pyseawater.NumAtoms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of atoms</p>
+<p>This class represents the number of atoms of a chemical element
+within a molecule.</p>
+<dl class="method">
+<dt id="pyseawater.NumAtoms.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">(object)self</em><span class="optional">[</span>, <em class="sig-param">(int)value=1</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; None :<a class="headerlink" href="#pyseawater.NumAtoms.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct new number of atoms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Number of atoms</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If <cite>value</cite> is smaller than <cite>min_value</cite>.</p></li>
+<li><p><strong>C++ signature :</strong> – void __init__(_object* [,int=1])</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyseawater.NumAtoms.value">
+<em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#pyseawater.NumAtoms.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of atoms</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pyseawater.mass_fractions">
+<code class="sig-prename descclassname">pyseawater.</code><code class="sig-name descname">mass_fractions</code><span class="sig-paren">(</span><em class="sig-param">(Molecule)molecule</em><span class="sig-paren">)</span> &#x2192; MassFractions :<a class="headerlink" href="#pyseawater.mass_fractions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element mass fractions</p>
+<p>Transform the given molecule into an element to mass fraction map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>molecule</strong> (<a class="reference internal" href="#pyseawater.Molecule" title="pyseawater.Molecule"><em>Molecule</em></a>) – Molecule</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>MassFractions</em> – Element to mass fraction map</p></li>
+<li><p><em>C++ signature</em> – std::map&lt;seawater::Element, seawater::MassFraction, std::less&lt;seawater::Element&gt;, std::allocator&lt;std::pair&lt;seawater::Element const, seawater::MassFraction&gt; &gt; &gt; mass_fractions(std::map&lt;seawater::Element, seawater::NumAtoms, std::less&lt;seawater::Element&gt;, std::allocator&lt;std::pair&lt;seawater::Element const, seawater::NumAtoms&gt; &gt; &gt;)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyseawater.seawater">
+<code class="sig-prename descclassname">pyseawater.</code><code class="sig-name descname">seawater</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">(float)salinity=0.035</em><span class="optional">[</span>, <em class="sig-param">(float)density=1.0</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; Medium :<a class="headerlink" href="#pyseawater.seawater" title="Permalink to this definition">¶</a></dt>
+<dd><p>Seawater</p>
+<p>Construct seawater as a propagation medium given the practical
+salinity of the ocean site of interest.</p>
+<p>Only the six most important (by reference salinity) materials
+dissolved in Standard Seawater are taken into account, according
+to <a class="reference internal" href="#millero2008" id="id1"><span>[Millero2008]</span></a>. These materials are sodium, magnesium, calcium,
+potassium, chlorine, and sulfate ions and will be referred to as
+salt.</p>
+<p>After correcting for the missing materials dissolved in Standard
+Seawater via renormalization, the element mass fractions of salt
+are scaled by</p>
+<div class="math notranslate nohighlight">
+\[S_{R} = S_{P} \times 35.16504/35\]</div>
+<p>where <span class="math notranslate nohighlight">\(S_{P}\)</span> is the practical salinity of the ocean site of
+interest, and combined with <span class="math notranslate nohighlight">\(1 - S_{R}\)</span> of pure water.</p>
+<dl class="citation">
+<dt class="label" id="millero2008"><span class="brackets"><a class="fn-backref" href="#id1">Millero2008</a></span></dt>
+<dd><p>F. J. Millero et al., Deep Sea Research Part I: Oceanographic
+Research Papers 55.1 (2008), pp. 50-72.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>salinity</strong> (<em>float</em><em>, </em><em>optional</em>) – Practical salinity</p></li>
+<li><p><strong>density</strong> (<em>float</em><em>, </em><em>optional</em>) – Mass density in g/cm3</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Medium</em> – Seawater</p></li>
+<li><p><em>C++ signature</em> – seawater::Medium seawater([ double=0.035 [,double=1.0]])</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyseawater.weight">
+<code class="sig-prename descclassname">pyseawater.</code><code class="sig-name descname">weight</code><span class="sig-paren">(</span><em class="sig-param">(Molecule)molecule</em><span class="sig-paren">)</span> &#x2192; float :<a class="headerlink" href="#pyseawater.weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Atomic weight</p>
+<p>Calculate the atomic weight of the given molecule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>molecule</strong> (<a class="reference internal" href="#pyseawater.Molecule" title="pyseawater.Molecule"><em>Molecule</em></a>) – Molecule</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>float</em> – Atomic weight</p></li>
+<li><p><em>C++ signature</em> – double weight(std::map&lt;seawater::Element, seawater::NumAtoms, std::less&lt;seawater::Element&gt;, std::allocator&lt;std::pair&lt;seawater::Element const, seawater::NumAtoms&gt; &gt; &gt;)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="seawater.html"
+                        title="previous chapter">C++ library reference</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pyseawater.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="seawater.html" title="C++ library reference"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">seawater 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kai Krings.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>
