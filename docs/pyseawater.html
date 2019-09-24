@@ -57,7 +57,6 @@ symbol.</p>
 <li><p><strong>symbol</strong> (<em>string</em>) – Element’s symbol</p></li>
 <li><p><strong>charge</strong> (<em>int</em>) – Element’s atomic charge</p></li>
 <li><p><strong>weight</strong> (<em>float</em>) – Element’s atomic weight</p></li>
-<li><p><strong>signature</strong> (<em>C++</em>) – void __init__(_object*,std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,int,double)</p></li>
 </ul>
 </dd>
 </dl>
@@ -113,10 +112,7 @@ chemical element within a mixture.</p>
 <dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – Mass fraction</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>ValueError</strong> – If <cite>value</cite> is not in the range <code class="docutils literal notranslate"><span class="pre">(min_value,</span> <span class="pre">max_value]</span></code>.</p></li>
-<li><p><strong>C++ signature :</strong> – void __init__(_object* [,double=1.0])</p></li>
-</ul>
+<dd class="field-even"><p><strong>ValueError</strong> – If <cite>value</cite> is not in the range <code class="docutils literal notranslate"><span class="pre">(min_value,</span> <span class="pre">max_value]</span></code>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -144,11 +140,8 @@ chemical element within a mixture.</p>
 <dd><p>Convert <cite>fractions</cite> into element to mass fraction map.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fractions</strong> (<em>Dict</em><em>[</em><a class="reference internal" href="#pyseawater.Element" title="pyseawater.Element"><em>Element</em></a><em>, </em><a class="reference internal" href="#pyseawater.MassFraction" title="pyseawater.MassFraction"><em>MassFraction</em></a><em>]</em>) – Mapping of chemical elements to mass fractions; values should
-be of type <cite>MassFraction</cite> or <cite>float</cite>.</p></li>
-<li><p><strong>signature</strong> (<em>C++</em>) – void* __init__(boost::python::api::object,boost::python::dict)</p></li>
-</ul>
+<dd class="field-odd"><p><strong>fractions</strong> (<em>Dict</em><em>[</em><a class="reference internal" href="#pyseawater.Element" title="pyseawater.Element"><em>Element</em></a><em>, </em><a class="reference internal" href="#pyseawater.MassFraction" title="pyseawater.MassFraction"><em>MassFraction</em></a><em>]</em>) – Mapping of chemical elements to mass fractions; values should
+be of type <cite>MassFraction</cite> or <cite>float</cite>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -174,10 +167,7 @@ to their corresponding mass fractions.</p>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>ValueError</strong> – If the sum of <cite>fractions</cite> is not equal to 1.</p></li>
-<li><p><strong>C++ signature :</strong> – void __init__(_object*,std::map&lt;seawater::Element, seawater::MassFraction, std::less&lt;seawater::Element&gt;, std::allocator&lt;std::pair&lt;seawater::Element const, seawater::MassFraction&gt; &gt; &gt;,double)</p></li>
-</ul>
+<dd class="field-even"><p><strong>ValueError</strong> – If the sum of <cite>fractions</cite> is not equal to 1.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -202,12 +192,11 @@ to their corresponding mass fractions.</p>
 <dd><p>Element mass fractions</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><ul class="simple">
-<li><p><em>Dict[Element, float]</em> – Mapping of the chemical elements the medium consists of to
-their corresponding mass fractions</p></li>
-<li><p><em>C++ signature</em> – boost::python::dict fractions(seawater::Medium)</p></li>
-</ul>
-</p>
+<dd class="field-odd"><p>Mapping of the chemical elements the medium consists of to
+their corresponding mass fractions</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict[<a class="reference internal" href="#pyseawater.Element" title="pyseawater.Element">Element</a>, float]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -224,11 +213,8 @@ their corresponding mass fractions</p></li>
 <dd><p>Convert <cite>atoms</cite> into element to number of atoms map.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>atoms</strong> (<em>Dict</em><em>[</em><a class="reference internal" href="#pyseawater.Element" title="pyseawater.Element"><em>Element</em></a><em>, </em><a class="reference internal" href="#pyseawater.NumAtoms" title="pyseawater.NumAtoms"><em>NumAtoms</em></a><em>]</em>) – Mapping of chemical elements to number of atoms; values should
-be of type <cite>NumAtoms</cite> or <cite>int</cite>.</p></li>
-<li><p><strong>signature</strong> (<em>C++</em>) – void* __init__(boost::python::api::object,boost::python::dict)</p></li>
-</ul>
+<dd class="field-odd"><p><strong>atoms</strong> (<em>Dict</em><em>[</em><a class="reference internal" href="#pyseawater.Element" title="pyseawater.Element"><em>Element</em></a><em>, </em><a class="reference internal" href="#pyseawater.NumAtoms" title="pyseawater.NumAtoms"><em>NumAtoms</em></a><em>]</em>) – Mapping of chemical elements to number of atoms; values should
+be of type <cite>NumAtoms</cite> or <cite>int</cite>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -250,10 +236,7 @@ within a molecule.</p>
 <dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Number of atoms</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>ValueError</strong> – If <cite>value</cite> is smaller than <cite>min_value</cite>.</p></li>
-<li><p><strong>C++ signature :</strong> – void __init__(_object* [,int=1])</p></li>
-</ul>
+<dd class="field-even"><p><strong>ValueError</strong> – If <cite>value</cite> is smaller than <cite>min_value</cite>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -281,11 +264,10 @@ within a molecule.</p>
 <dd class="field-odd"><p><strong>molecule</strong> (<a class="reference internal" href="#pyseawater.Molecule" title="pyseawater.Molecule"><em>Molecule</em></a>) – Molecule</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>MassFractions</em> – Element to mass fraction map</p></li>
-<li><p><em>C++ signature</em> – std::map&lt;seawater::Element, seawater::MassFraction, std::less&lt;seawater::Element&gt;, std::allocator&lt;std::pair&lt;seawater::Element const, seawater::MassFraction&gt; &gt; &gt; mass_fractions(std::map&lt;seawater::Element, seawater::NumAtoms, std::less&lt;seawater::Element&gt;, std::allocator&lt;std::pair&lt;seawater::Element const, seawater::NumAtoms&gt; &gt; &gt;)</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>Element to mass fraction map</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyseawater.MassFractions" title="pyseawater.MassFractions">MassFractions</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -322,11 +304,10 @@ Research Papers 55.1 (2008), pp. 50-72.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>Medium</em> – Seawater</p></li>
-<li><p><em>C++ signature</em> – seawater::Medium seawater([ double=0.035 [,double=1.0]])</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>Seawater</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyseawater.Medium" title="pyseawater.Medium">Medium</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -341,11 +322,10 @@ Research Papers 55.1 (2008), pp. 50-72.</p>
 <dd class="field-odd"><p><strong>molecule</strong> (<a class="reference internal" href="#pyseawater.Molecule" title="pyseawater.Molecule"><em>Molecule</em></a>) – Molecule</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>float</em> – Atomic weight</p></li>
-<li><p><em>C++ signature</em> – double weight(std::map&lt;seawater::Element, seawater::NumAtoms, std::less&lt;seawater::Element&gt;, std::allocator&lt;std::pair&lt;seawater::Element const, seawater::NumAtoms&gt; &gt; &gt;)</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>Atomic weight</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>

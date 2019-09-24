@@ -12,6 +12,8 @@
  */
 #include <boost/python.hpp>
 
+namespace bp = boost::python;
+
 namespace seawater {
 namespace python {
 
@@ -27,6 +29,8 @@ void RegisterSeawater();
 
 BOOST_PYTHON_MODULE(pyseawater)
 {
+    bp::docstring_options docstrings{true, true, false};
+
     seawater::python::RegisterElement();
     seawater::python::RegisterMassFraction();
     seawater::python::RegisterNumAtoms();
