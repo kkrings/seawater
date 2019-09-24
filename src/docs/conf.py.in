@@ -12,12 +12,12 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../pyseawater'))
+sys.path.insert(0, os.path.abspath('${CMAKE_BINARY_DIR}/py${PROJECT_NAME}'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'seawater'
+project = '${PROJECT_NAME}'
 copyright = '2019, Kai Krings'
 author = 'Kai Krings'
 
@@ -45,13 +45,16 @@ templates_path = []
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['Thumbs.db', '.DS_Store']
 
+# The master toctree document.
+master_doc = 'index'
+
 
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'nature'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -61,7 +64,7 @@ html_static_path = []
 
 # -- Extension configuration -------------------------------------------------
 breathe_projects = {
-    'seawater': '${DOXYGEN_XML_OUTPUT_DIRECTORY}'
+    '${PROJECT_NAME}': '${CMAKE_CURRENT_BINARY_DIR}/xml'
     }
 
-breathe_default_project = 'seawater'
+breathe_default_project = '${PROJECT_NAME}'
