@@ -9,6 +9,7 @@
    :caption: Contents:
 
    install
+   usage
    develop
    seawater
    pyseawater

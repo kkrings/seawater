@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting Started &#8212; seawater 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Development" href="develop.html" />
+    <link rel="prev" title="Installation" href="install.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started">
+<span id="usage"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This page exemplary shows how to calculate the composition of seawater given a
+practical salinity by using both the project’s C++ and the Python interface,
+respectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here, composition refers to the mass fractions <span class="math notranslate nohighlight">\(f_{i}\)</span> of all the
+elements seawater consists of. Moreover, an effective number of
+atoms <span class="math notranslate nohighlight">\(n_{i}\)</span> is calculated for each element:</p>
+<div class="math notranslate nohighlight">
+\[n_{i} = f_{i} \times w_{\mathrm{tot}} / w_{i}.\]</div>
+<p>An effective total weight <span class="math notranslate nohighlight">\(w_{\mathrm{tot}}\)</span> of seawater is chosen,
+which gives two hydrogen atoms.</p>
+</div>
+<div class="section" id="example-c-library">
+<h2>Example: C++ library<a class="headerlink" href="#example-c-library" title="Permalink to this headline">¶</a></h2>
+<p>The following example shows how to obtain the composition of seawater in C++
+by using the function <a class="reference internal" href="seawater.html#_CPPv4N8seawater11GetSeaWaterEdd" title="seawater::GetSeaWater"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">seawater::GetSeaWater()</span></code></a>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;seawater/element.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;seawater/seawater.h&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">auto</span> <span class="n">seawater</span> <span class="o">=</span> <span class="n">seawater</span><span class="o">::</span><span class="n">GetSeaWater</span><span class="p">(</span><span class="mf">35e-3</span><span class="p">,</span> <span class="mf">1.</span><span class="p">);</span>
+
+    <span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="n">fractions</span> <span class="o">=</span> <span class="n">seawater</span><span class="p">.</span><span class="n">GetMassFractions</span><span class="p">();</span>
+    <span class="n">seawater</span><span class="o">::</span><span class="n">Element</span> <span class="n">hydrogen</span><span class="p">{</span><span class="s">&quot;H&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">};</span>
+
+    <span class="kt">double</span> <span class="n">weight</span>  <span class="o">=</span> <span class="p">(</span>
+        <span class="mf">2.</span> <span class="o">*</span> <span class="n">hydrogen</span><span class="p">.</span><span class="n">GetWeight</span><span class="p">()</span> <span class="o">/</span>
+        <span class="n">fractions</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">hydrogen</span><span class="p">).</span><span class="n">GetValue</span><span class="p">()</span>
+        <span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">element</span> <span class="p">:</span> <span class="n">fractions</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">atoms</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">element</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">GetValue</span><span class="p">()</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">/</span>
+            <span class="n">element</span><span class="p">.</span><span class="n">first</span><span class="p">.</span><span class="n">GetWeight</span><span class="p">()</span>
+            <span class="p">);</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Element &quot;</span>
+                  <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+                  <span class="o">&lt;&lt;</span> <span class="n">element</span><span class="p">.</span><span class="n">first</span><span class="p">.</span><span class="n">GetSymbol</span><span class="p">()</span>
+                  <span class="o">&lt;&lt;</span> <span class="s">&quot;: mass fraction = &quot;</span>
+                  <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+                  <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+                  <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">fixed</span>
+                  <span class="o">&lt;&lt;</span> <span class="n">element</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">GetValue</span><span class="p">()</span> <span class="o">*</span> <span class="mf">100.</span>
+                  <span class="o">&lt;&lt;</span> <span class="s">&quot;%, effective number of atoms = &quot;</span>
+                  <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">scientific</span>
+                  <span class="o">&lt;&lt;</span> <span class="n">atoms</span>
+                  <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The returned <a class="reference internal" href="seawater.html#_CPPv4N8seawater6MediumE" title="seawater::Medium"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">seawater::Medium</span></code></a> object could for example be used to
+create a seawater material for detector simulations with <a class="reference external" href="http://geant4.web.cern.ch/">Geant4</a>.</p>
+</div>
+<div class="section" id="example-python-module">
+<h2>Example: Python module<a class="headerlink" href="#example-python-module" title="Permalink to this headline">¶</a></h2>
+<p>The same result can also be obtained in Python by using
+the <a class="reference internal" href="pyseawater.html#pyseawater.seawater" title="pyseawater.seawater"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyseawater.seawater()</span></code></a> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyseawater</span>
+
+<span class="n">seawater</span> <span class="o">=</span> <span class="n">pyseawater</span><span class="o">.</span><span class="n">seawater</span><span class="p">(</span><span class="n">salinity</span><span class="o">=</span><span class="mf">35e-3</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="n">fractions</span> <span class="o">=</span> <span class="n">seawater</span><span class="o">.</span><span class="n">fractions</span><span class="p">()</span>
+
+<span class="n">hydrogen</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">element</span><span class="o">.</span><span class="n">symbol</span><span class="p">:</span> <span class="n">element</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">fractions</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="p">}[</span><span class="s2">&quot;H&quot;</span><span class="p">]</span>
+
+<span class="n">weight</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">hydrogen</span><span class="o">.</span><span class="n">weight</span> <span class="o">/</span> <span class="n">fractions</span><span class="p">[</span><span class="n">hydrogen</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">fraction</span><span class="p">)</span> <span class="ow">in</span> <span class="n">fractions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span>
+        <span class="s2">&quot;Element {symbol:2}: &quot;</span>
+        <span class="s2">&quot;mass fraction = {fraction:8.4%}, &quot;</span>
+        <span class="s2">&quot;effective number of atoms = {atoms:.4e}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">symbol</span><span class="o">=</span><span class="n">element</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span>
+            <span class="n">fraction</span><span class="o">=</span><span class="n">fraction</span><span class="p">,</span>
+            <span class="n">atoms</span><span class="o">=</span><span class="n">fraction</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">element</span><span class="o">.</span><span class="n">weight</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">seawater</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seawater.html">C++ library reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyseawater.html">Python module reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="install.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="develop.html" title="next chapter">Development</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Kai Krings.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
