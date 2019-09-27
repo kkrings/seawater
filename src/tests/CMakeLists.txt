@@ -18,12 +18,12 @@ add_library(
 # Add test executable.
 add_executable(
 	test_seawater
-	main.cxx
-	test_element.cxx
-	test_massfraction.cxx
-	test_numatoms.cxx
-	test_medium.cxx
-	test_seawater.cxx
+	seawater/main.cxx
+	seawater/test_element.cxx
+	seawater/test_massfraction.cxx
+	seawater/test_numatoms.cxx
+	seawater/test_medium.cxx
+	seawater/test_seawater.cxx
 	)
 
 target_link_libraries(
@@ -63,7 +63,7 @@ if(BUILD_PYMODULE)
 		)
 
 	configure_file(
-		test_pyseawater.py.in
+		pyseawater/main.py.in
 		test_pyseawater.py
 		)
 
