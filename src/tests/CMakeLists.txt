@@ -1,5 +1,5 @@
 #
-# Target for seawater C++ test executable.
+# Unit tests
 #
 
 # Add googletest.
@@ -15,7 +15,7 @@ add_library(
 	ALIAS gtest_main
 	)
 
-# Add test executable.
+# Add C++ test executable.
 add_executable(
 	test_seawater
 	seawater/main.cxx
@@ -44,10 +44,12 @@ set_target_properties(
 		CXX_EXTENSIONS OFF
 	)
 
-# Discover all unit tests.
-include(GoogleTest)
-gtest_discover_tests(test_seawater)
+add_test(
+	NAME test_seawater
+	COMMAND test_seawater
+	)
 
+# Add Python test scripts.
 if(BUILD_PYMODULE)
 	set(
 		PYSEAWATER_TEST_PACKAGE
@@ -73,6 +75,7 @@ if(BUILD_PYMODULE)
 		)
 endif()
 
+# Add target for coverage report.
 if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 	add_custom_target(
 		coverage
@@ -86,4 +89,8 @@ if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 		)
 
 	add_dependencies(coverage test_seawater)
+
+	if(BUILD_PYMODULE)
+		add_dependencies(coverage pyseawater)
+	endif()
 endif()
