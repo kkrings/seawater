@@ -1,0 +1,32 @@
+#!${Python_EXECUTABLE}
+# -*- coding: utf-8 -*-
+
+"""Run unit tests of `pyseawater` module.
+
+"""
+import os
+import pkg_resources
+import sys
+import unittest
+
+sys.path.extend([
+    os.path.abspath("${CMAKE_BINARY_DIR}/pyseawater"),
+    os.path.abspath("${CMAKE_BINARY_DIR}/tests")
+    ])
+
+
+def load_tests():
+    """Load test cases from submodules.
+
+    """
+    names = [
+        "test_pyseawater.{}".format(os.path.splitext(name)[0])
+        for name in pkg_resources.resource_listdir("test_pyseawater", '')
+        if name.endswith(".py") and name != "__init__.py"
+        ]
+
+    return unittest.TestLoader().loadTestsFromNames(names)
+
+
+if __name__ == "__main__":
+    unittest.TextTestRunner(verbosity=2).run(load_tests())

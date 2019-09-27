@@ -48,6 +48,31 @@ set_target_properties(
 include(GoogleTest)
 gtest_discover_tests(test_seawater)
 
+if(BUILD_PYMODULE)
+	set(
+		PYSEAWATER_TEST_PACKAGE
+		pyseawater/__init__.py
+		pyseawater/test_element.py
+		pyseawater/test_massfraction.py
+		pyseawater/test_seawater.py
+		)
+
+	file(
+		COPY ${PYSEAWATER_TEST_PACKAGE}
+		DESTINATION test_pyseawater
+		)
+
+	configure_file(
+		test_pyseawater.py.in
+		test_pyseawater.py
+		)
+
+	add_test(
+		NAME test_pyseawater
+		COMMAND ${Python_EXECUTABLE} test_pyseawater.py
+		)
+endif()
+
 if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 	add_custom_target(
 		coverage
