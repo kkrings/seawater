@@ -11,6 +11,7 @@
    install
    usage
    develop
+   composition
    seawater
    pyseawater
 
