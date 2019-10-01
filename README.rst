@@ -9,10 +9,8 @@ composition of seawater given a practical salinity.
 The composition is based on the six most important (by reference salinity)
 materials dissolved in *Standard Seawater*, according to F. J. Millero et al.,
 Deep Sea Research Part I: Oceanographic Research Papers 55.1 (2008), pp. 50-72.
-These materials are sodium, magnesium, calcium, potassium, chlorine, and
-sulfate ions.
 
-One of the design goals is two have a simple set of C++ classes that represent
+The C++11 library consists of a simple set of C++ classes that represent
 chemical elements, element mass fractions, number of atoms, molecules, and
 mixture. These classes can be used for creating a seawater material for
 detector simulations with e.g. `Geant4`_.
