@@ -1,7 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-r"""Unit tests for `pyseawater.MassFraction`
+"""Unit tests for `pyseawater.MassFraction`
 
 """
 import unittest
@@ -10,11 +9,11 @@ import pyseawater
 
 
 class MassFractionTestCase(unittest.TestCase):
-    r"""Test cases for `pyseawater.MassFraction`
+    """Test cases for `pyseawater.MassFraction`
 
     """
     def test_min_value(self):
-        r"""Test static property `min_value`.
+        """Test static property `min_value`.
 
         """
         self.assertEqual(
@@ -22,7 +21,7 @@ class MassFractionTestCase(unittest.TestCase):
             "The static property `min_value` is not equal to ``0.``.")
 
     def test_max_value(self):
-        r"""Test static property `max_value`.
+        """Test static property `max_value`.
 
         """
         self.assertEqual(
@@ -30,7 +29,7 @@ class MassFractionTestCase(unittest.TestCase):
             "The static property `max_value` is not equal to ``1.``.")
 
     def test_value_init(self):
-        r"""Test property `value` after initialization.
+        """Test property `value` after initialization.
 
         """
         fraction = pyseawater.MassFraction(0.5)
@@ -40,7 +39,7 @@ class MassFractionTestCase(unittest.TestCase):
             "The property `value` is not equal to ``0.5``.")
 
     def test_exception_too_small_value_init(self):
-        r"""Test expected exception from initialization.
+        """Test expected exception from initialization.
 
         """
         message = "A `value` of ``0.`` did not raise an exception."
@@ -49,7 +48,7 @@ class MassFractionTestCase(unittest.TestCase):
             pyseawater.MassFraction(0.)
 
     def test_exception_too_large_value_init(self):
-        r"""Test expected exception from initialization.
+        """Test expected exception from initialization.
 
         """
         message = "A `value` of ``1.1`` did not raise an exception."
@@ -58,7 +57,7 @@ class MassFractionTestCase(unittest.TestCase):
             pyseawater.MassFraction(1.1)
 
     def test_value_setter(self):
-        r"""Test `value` setter.
+        """Test `value` setter.
 
         """
         fraction = pyseawater.MassFraction(1.)
@@ -69,7 +68,7 @@ class MassFractionTestCase(unittest.TestCase):
             "The property `value` is not equal to ``0.5``.")
 
     def test_exception_too_small_value_setter(self):
-        r"""Test expected exception from `value` setter.
+        """Test expected exception from `value` setter.
 
         """
         fraction = pyseawater.MassFraction(1.)
@@ -80,7 +79,7 @@ class MassFractionTestCase(unittest.TestCase):
             fraction.value = 0.
 
     def test_exception_too_large_value_setter(self):
-        r"""Test expected exception from `value` setter.
+        """Test expected exception from `value` setter.
 
         """
         fraction = pyseawater.MassFraction(1.)
@@ -89,8 +88,3 @@ class MassFractionTestCase(unittest.TestCase):
 
         with self.assertRaises(ValueError, msg=message):
             fraction.value = 1.1
-
-
-if __name__ == "__main__":
-    # Execute the unit tests.
-    unittest.main()
