@@ -48,7 +48,7 @@ class MoleculeTestCase(unittest.TestCase):
         """Test molecule to dictionary conversions.
 
         """
-        molecule = pyseawater.molecule2dict(
+        molecule = pyseawater._molecule2dict(
             pyseawater.Molecule({pyseawater.Element('H', 1, 1.): 2}))
 
         molecule = {
@@ -62,7 +62,7 @@ class MoleculeTestCase(unittest.TestCase):
         """Test multiplication of scale and molecule.
 
         """
-        fractions = pyseawater.massfractions2dict(
+        fractions = pyseawater._fractions2dict(
             1. * pyseawater.Molecule({pyseawater.Element('H', 1, 1.): 2}))
 
         fractions = {

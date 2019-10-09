@@ -74,9 +74,8 @@ void RegisterNumAtoms()
         "\n"
         "Parameters\n"
         "----------\n"
-        "atoms : Dict[Element, NumAtoms]\n"
-        "    Mapping of chemical elements to number of atoms; values should\n"
-        "    be of type `NumAtoms` or `int`."
+        "atoms : Dict[Element, int]\n"
+        "    Mapping of chemical elements to number of atoms"
     )
     .def(
         double() * bp::self
@@ -121,12 +120,13 @@ void RegisterNumAtoms()
     );
 
     bp::def(
-        "molecule2dict",
+        "_molecule2dict",
         ToDict<Molecule>,
         bp::args("molecule"),
         "Molecule to dictionary\n"
         "\n"
-        "Convert the given molecule into a dictionary.\n"
+        "Convert the given molecule into a dictionary. This function is only\n"
+        "supposed to be used for unit tests.\n"
         "\n"
         "Parameters\n"
         "----------\n"

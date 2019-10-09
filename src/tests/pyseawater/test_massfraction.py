@@ -98,7 +98,7 @@ class MassFractionsTestCase(unittest.TestCase):
         """Test element to mass fraction map to dictionary conversions.
 
         """
-        fractions = pyseawater.massfractions2dict(
+        fractions = pyseawater._fractions2dict(
             pyseawater.MassFractions({pyseawater.Element('H', 1, 1.): 1.}))
 
         fractions = {
@@ -115,7 +115,7 @@ class MassFractionsTestCase(unittest.TestCase):
         hydrogen = pyseawater.Element('H', 1, 1.)
         oxygen = pyseawater.Element('O', 8, 16.)
 
-        fractions = pyseawater.massfractions2dict(
+        fractions = pyseawater._fractions2dict(
             pyseawater.MassFractions({hydrogen: 0.25}) +
             pyseawater.MassFractions({hydrogen: 0.25}) +
             pyseawater.MassFractions({oxygen: 0.5}))
@@ -134,7 +134,7 @@ class MassFractionsTestCase(unittest.TestCase):
         """
         hydrogen = pyseawater.Element('H', 1, 1.)
 
-        fractions = pyseawater.massfractions2dict(
+        fractions = pyseawater._fractions2dict(
             2. * pyseawater.MassFractions({hydrogen: 0.5}))
 
         fractions = {
