@@ -28,49 +28,37 @@ namespace python {
  *
  * Extract pairs of element and amount from a Python dictionary and copy these
  * to a STL element to amount map, e.g. element to mass fraction or element to
- * number of atoms maps. If the dictionary's values are not of type amount, the
- * amount's internal value type is extracted.
+ * number of atoms maps.
  *
- * @tparam MapElementAmount
+ * @tparam ElementAmountMap
  *     Type of STL element to amount map
  * @tparam Value
  *     Amount's internal value type, e.g. double for mass fraction type and int
  *     for number of atoms type, respectively.
  *
- * @param[in] elemenDict
+ * @param[in] elementAmountDict
  *     Python dictionary that contains pairs of element and amount
  *
  * @returns
  *     Element to amount map
  */
-template<typename MapElementAmount, typename Value>
-std::shared_ptr<MapElementAmount> FromDict(const bp::dict& elementDict)
+template<typename ElementAmountMap, typename Value>
+std::shared_ptr<ElementAmountMap> FromDict(const bp::dict& elementAmountDict)
 {
-    using Amount = typename MapElementAmount::mapped_type;
+    using Amount = typename ElementAmountMap::mapped_type;
+    bp::list elements = elementAmountDict.keys();
 
-    bp::list items = elementDict.items();
-
-    MapElementAmount elementMap;
-    for(int i = 0, n = bp::len(items); i < n; ++i)
+    ElementAmountMap elementAmountMap;
+    for(int i = 0, n = bp::len(elements); i < n; ++i)
     {
-        bp::tuple item = bp::extract<bp::tuple>(items[i]);
+        bp::object element = elements[i];
 
-        Element element = bp::extract<Element>(item[0]);
-
-        bp::extract<Amount&> value{item[1]};
-        if (value.check())
-        {
-            Amount& amount = value();
-            elementMap.emplace(element, amount);
-        }
-        else
-        {
-            Value amount = bp::extract<Value>(item[1]);
-            elementMap.emplace(element, amount);
-        }
+        elementAmountMap.emplace(
+            bp::extract<Element>(element),
+            bp::extract<Value>(elementAmountDict[element]));
     }
 
-    return std::make_shared<MapElementAmount>(elementMap);
+    return std::make_shared<ElementAmountMap>(elementAmountMap);
 }
 
 /**
@@ -91,7 +79,7 @@ template<typename ElementAmountMap>
 bp::dict ToDict(const ElementAmountMap& elementAmountMap)
 {
     bp::dict elementAmountDict;
-    for (const auto& elementAmountPair : elementAmountMap)
+    for(const auto& elementAmountPair : elementAmountMap)
     {
         elementAmountDict[elementAmountPair.first] =
             elementAmountPair.second.GetValue();
