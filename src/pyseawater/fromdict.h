@@ -73,5 +73,32 @@ std::shared_ptr<MapElementAmount> FromDict(const bp::dict& elementDict)
     return std::make_shared<MapElementAmount>(elementMap);
 }
 
+/**
+ * @brief Element to amount map to Python dictionary.
+ *
+ * Copy entries of element to amount map into a Python dictionary.
+ *
+ * @tparam ElementAmountMap
+ *     Type of STL element to amount map
+ *
+ * @param[in] elementAmountMap
+ *     Element to amount map
+ *
+ * @returns
+ *     Python dictionary
+ */
+template<typename ElementAmountMap>
+bp::dict ToDict(const ElementAmountMap& elementAmountMap)
+{
+    bp::dict elementAmountDict;
+    for (const auto& elementAmountPair : elementAmountMap)
+    {
+        elementAmountDict[elementAmountPair.first] =
+            elementAmountPair.second.GetValue();
+    }
+
+    return elementAmountDict;
+}
+
 } // namespace python
 } // namespace seawater

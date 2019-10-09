@@ -97,6 +97,25 @@ void RegisterMassFraction()
         double() * bp::self
     );
 
+    bp::def(
+        "massfractions2dict",
+        ToDict<MassFractions>,
+        bp::args("massfractions"),
+        "Element to mass fraction map to dictionary\n"
+        "\n"
+        "Convert the given element to mass fraction map into a dictionary.\n"
+        "\n"
+        "Parameters\n"
+        "----------\n"
+        "massfractions : MassFractions\n"
+        "    Element to mass fraction map\n"
+        "\n"
+        "Returns\n"
+        "-------\n"
+        "Dict[Element, float]\n"
+        "    Mapping of chemical elements to mass fractions"
+    );
+
 }
 
 } // namespace python

@@ -12,7 +12,9 @@
  */
 #include <boost/python.hpp>
 
+#include "seawater/massfraction.h"
 #include "seawater/medium.h"
+#include "fromdict.h"
 
 namespace bp = boost::python;
 
@@ -22,15 +24,7 @@ namespace python {
 // wrap GetMassFractions member function: returns a Python dictionary
 bp::dict GetMassFractionsWrapper(const Medium& medium)
 {
-    auto fractions = medium.GetMassFractions();
-
-    bp::dict fractionDict;
-    for (const auto& fraction : fractions)
-    {
-        fractionDict[fraction.first] = fraction.second.GetValue();
-    }
-
-    return fractionDict;
+    return ToDict<MassFractions>(medium.GetMassFractions());
 }
 
 // register Medium class

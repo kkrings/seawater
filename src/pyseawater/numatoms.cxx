@@ -119,6 +119,25 @@ void RegisterNumAtoms()
         "MassFractions\n"
         "    Element to mass fraction map"
     );
+
+    bp::def(
+        "molecule2dict",
+        ToDict<Molecule>,
+        bp::args("molecule"),
+        "Molecule to dictionary\n"
+        "\n"
+        "Convert the given molecule into a dictionary.\n"
+        "\n"
+        "Parameters\n"
+        "----------\n"
+        "molecule : Molecule\n"
+        "    Molecule\n"
+        "\n"
+        "Returns\n"
+        "-------\n"
+        "Dict[Element, int]\n"
+        "    Mapping of chemical elements to numbers of atoms"
+    );
 }
 
 } // namespace python
