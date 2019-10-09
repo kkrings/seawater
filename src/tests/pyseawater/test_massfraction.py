@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Unit tests for `pyseawater.MassFraction`
+"""Tests for `pyseawater.MassFraction` and `pyseawater.MassFractions`
 
 """
 import unittest
@@ -88,3 +88,58 @@ class MassFractionTestCase(unittest.TestCase):
 
         with self.assertRaises(ValueError, msg=message):
             fraction.value = 1.1
+
+
+class MassFractionsTestCase(unittest.TestCase):
+    """Test cases for `pyseawater.MassFractions`.
+
+    """
+    def test_init(self):
+        """Test element to mass fraction map to dictionary conversions.
+
+        """
+        fractions = pyseawater.massfractions2dict(
+            pyseawater.MassFractions({pyseawater.Element('H', 1, 1.): 1.}))
+
+        fractions = {
+            (element.symbol, element.charge, element.weight): fraction
+            for element, fraction in fractions.items()
+            }
+
+        self.assertDictEqual(fractions, {('H', 1, 1.): 1.})
+
+    def test_addition(self):
+        """Test addition of two element to mass fraction maps.
+
+        """
+        hydrogen = pyseawater.Element('H', 1, 1.)
+        oxygen = pyseawater.Element('O', 8, 16.)
+
+        fractions = pyseawater.massfractions2dict(
+            pyseawater.MassFractions({hydrogen: 0.25}) +
+            pyseawater.MassFractions({hydrogen: 0.25}) +
+            pyseawater.MassFractions({oxygen: 0.5}))
+
+        fractions = {
+            (element.symbol, element.charge, element.weight): fraction
+            for element, fraction in fractions.items()
+            }
+
+        self.assertDictEqual(
+            fractions, {('H', 1, 1.): 0.5, ('O', 8, 16.): 0.5})
+
+    def test_multiplication(self):
+        """Test multiplication of scale and element to mass fraction map.
+
+        """
+        hydrogen = pyseawater.Element('H', 1, 1.)
+
+        fractions = pyseawater.massfractions2dict(
+            2. * pyseawater.MassFractions({hydrogen: 0.5}))
+
+        fractions = {
+            (element.symbol, element.charge, element.weight): fraction
+            for element, fraction in fractions.items()
+            }
+
+        self.assertDictEqual(fractions, {('H', 1, 1.): 1.})
