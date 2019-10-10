@@ -5,7 +5,7 @@
  * (c) 2019
  * Kai Krings
  *
- * @file fromdict.h
+ * @file dict.h
  * @date 2019-06-06
  * @author Kai Krings <kai.krings@posteo.de>
  *
