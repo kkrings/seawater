@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Tests for `pyseawater.NumAtoms` and `pyseawater.Molecule`.
+"""Unit tests for `pyseawater.NumAtoms`
 
 """
 import unittest
@@ -71,3 +71,17 @@ class MoleculeTestCase(unittest.TestCase):
             }
 
         self.assertDictEqual(fractions, {('H', 1, 1.): 1.})
+
+    def test_weight(self):
+        """Test function `pyseawater.weight`.
+
+        """
+        hydrogen = pyseawater.Element("H", 1, 1.)
+
+        self.assertEqual(
+            pyseawater.weight(pyseawater.Molecule({hydrogen: 1})),
+            hydrogen.weight)
+
+        self.assertEqual(
+            pyseawater.weight(pyseawater.Molecule({hydrogen: 2})),
+            2.*hydrogen.weight)
