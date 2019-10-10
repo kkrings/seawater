@@ -57,6 +57,7 @@ if(BUILD_PYMODULE)
 		pyseawater/test_element.py
 		pyseawater/test_massfraction.py
 		pyseawater/test_numatoms.py
+		pyseawater/test_medium.py
 		pyseawater/test_seawater.py
 		)
 
