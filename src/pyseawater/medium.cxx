@@ -14,7 +14,7 @@
 
 #include "seawater/massfraction.h"
 #include "seawater/medium.h"
-#include "fromdict.h"
+#include "dict.h"
 
 namespace bp = boost::python;
 
