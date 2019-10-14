@@ -14,8 +14,8 @@ directory:
 
 .. code-block:: bash
 
-   tar -xzvf seawater_v0.1.0.tar.gz
-   cd seawater
+   tar -xzvf v0.1.tar.gz
+   cd seawater-0.1
    mkdir build
    cd build
 
