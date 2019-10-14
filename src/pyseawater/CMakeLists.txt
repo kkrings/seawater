@@ -3,19 +3,19 @@
 #
 
 find_package(
-	Python
-	COMPONENTS Interpreter Development
-	)
-
-set(
-	BOOST_PYTHON
-	"python${Python_VERSION_MAJOR}${Python_VERSION_MINOR}"
+	PythonInterp 2.7
+	REQUIRED
 	)
 
 find_package(
-	Boost 1.67
+	PythonLibs
 	REQUIRED
-	COMPONENTS ${BOOST_PYTHON}
+	)
+
+find_package(
+	Boost 1.65
+	REQUIRED
+	COMPONENTS python
 	)
 
 # Add pyseawater target.
@@ -34,15 +34,16 @@ target_include_directories(
 	pyseawater
 	PRIVATE
 		${CMAKE_CURRENT_SOURCE_DIR}
+		${PYTHON_INCLUDE_DIRS}
 	)
 
 target_link_libraries(
 	pyseawater
 	PRIVATE
 		seawater
-		Python::Python
+		${PYTHON_LIBRARIES}
 		Boost::boost
-		Boost::${BOOST_PYTHON}
+		Boost::python
 	)
 
 target_compile_features(
@@ -57,8 +58,21 @@ set_target_properties(
 	PREFIX ""
 	)
 
+string(
+	CONCAT
+	GET_PYTHON_SITELIB
+	"import distutils.sysconfig; "
+	"print(distutils.sysconfig.get_python_lib())"
+	)
+
+execute_process(
+	COMMAND ${PYTHON_EXECUTABLE} -c "${GET_PYTHON_SITELIB}"
+	OUTPUT_VARIABLE PYTHON_SITELIB
+	OUTPUT_STRIP_TRAILING_WHITESPACE
+	)
+
 # Install pyseawater target.
 install(
 	TARGETS pyseawater
-	DESTINATION ${Python_SITELIB}
+	DESTINATION ${PYTHON_SITELIB}
 	)

@@ -25,13 +25,13 @@ Requirements
 
 The installation requires:
 
-* `CMake`_ 3.12 or above, and
+* `CMake`_ 3.10 or above, and
 * a compiler that supports C++11.
 
 Optionally, the Python bindings require:
 
-* Python 2.7 or above, and
-* `Boost`_'s Python library 1.67 or above.
+* Python 2.7, and
+* `Boost`_'s Python library 1.65 or above.
 
 
 C++ library
