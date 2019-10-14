@@ -5,6 +5,21 @@ This project provides the C++ library `seawater`, which can also be exported to
 Python in form of the Python module `pyseawater`.
 
 
+Download
+--------
+
+The project's newest release can be downloaded from `GitHub`_. After extracting
+the archive's content, create a build directory from within the source
+directory:
+
+.. code-block:: bash
+
+   tar -xzvf seawater_v0.1.0.tar.gz
+   cd seawater
+   mkdir build
+   cd build
+
+
 Requirements
 ------------
 
@@ -22,20 +37,19 @@ Optionally, the Python bindings require:
 C++ library
 -----------
 
-From within the project's directory, run the following commands:
+Run the following commands from within the build directory:
 
 .. code-block:: bash
 
-   mkdir build
-   cd build
    cmake -DCMAKE_BUILD_TYPE=Release ..
-   make
+   make install
 
-The library is installed via ``make install``. Note that a global installation
-requires `sudo`. A different install location can be specified via the `cmake`
-command line argument ``CMAKE_INSTALL_PREFIX``. The library's `cmake` target is
-copied to the subdirectory ``lib/cmake`` under the install prefix and can be
-included and used in your own project as shown below:
+A global installation requires `sudo`. A different install location can be
+specified via the `cmake` command line argument ``CMAKE_INSTALL_PREFIX``.
+
+The library's `cmake` target is copied to the subdirectory ``lib/cmake`` under
+the install prefix and can be included and used in your own project as shown
+below:
 
 .. code-block:: cmake
 
@@ -67,6 +81,9 @@ Make sure that the C++ library can be found when importing the Python module:
 
 
 .. Links
+.. _GitHub:
+   https://github.com/kkrings/seawater/releases/
+
 .. _CMake:
    https://cmake.org/
 

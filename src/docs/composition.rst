@@ -21,8 +21,8 @@ respectively.
    which gives two hydrogen atoms.
 
 
-Example: C++ library
---------------------
+C++ library
+-----------
 
 The following example shows how to obtain the composition of seawater in C++
 by using the function :cpp:func:`seawater::GetSeaWater`:
@@ -77,8 +77,8 @@ create a seawater material for detector simulations with `Geant4`_.
    http://geant4.web.cern.ch/
 
 
-Example: Python module
-----------------------
+Python module
+-------------
 
 The same result can also be obtained in Python by using
 the :func:`pyseawater.seawater` function:

@@ -7,8 +7,8 @@ This page exemplary shows how to use the provided C++ library and its Python
 interface.
 
 
-Example: C++ library
---------------------
+C++ library
+-----------
 
 A chemical element is created via the :cpp:class:`seawater::Element` class by
 specifying the element's symbol, atomic charge, and atomic weight,
@@ -60,8 +60,8 @@ A mixture of two materials is created via multiplication and addition:
    seawater::MassFractions saltwater = 0.97*water + 0.03*salt;
 
 
-Example: Python module
-----------------------
+Python module
+-------------
 
 The following code blocks shows the usage of the :mod:`pyseawater` module:
 
