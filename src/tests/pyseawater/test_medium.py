@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Tests for `pyseawater.Medium`
+"""Unit tests for `pyseawater.Medium`
 
 """
 import unittest

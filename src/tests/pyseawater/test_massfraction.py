@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Tests for `pyseawater.MassFraction` and `pyseawater.MassFractions`
+"""Unit tests for `pyseawater.MassFraction`
 
 """
 import unittest
