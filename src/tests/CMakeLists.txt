@@ -77,6 +77,20 @@ if(BUILD_PYMODULE)
 		)
 endif()
 
+# Add target for executing unit tests.
+add_custom_target(
+	tests
+	COMMAND ctest
+	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+	COMMENT "Executing unit tests"
+	)
+
+add_dependencies(tests test_seawater)
+
+if(BUILD_PYMODULE)
+	add_dependencies(tests pyseawater)
+endif()
+
 # Add target for coverage report.
 if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 	add_custom_target(
