@@ -1,7 +1,10 @@
-.. documentation start
-
 Standard Seawater
 =================
+
+.. image:: https://travis-ci.org/kkrings/seawater.svg?branch=master
+   :target: https://travis-ci.org/kkrings/seawater
+
+.. documentation start
 
 This project provides a small C++11 library for calculating the chemical
 composition of seawater given a practical salinity.
@@ -19,7 +22,6 @@ This project also provides a Python interface to the C++ library.
 
 .. _Geant4:
    http://geant4.web.cern.ch/
-
 
 .. documentation stop
 
