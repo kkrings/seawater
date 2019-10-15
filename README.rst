@@ -11,8 +11,8 @@ materials dissolved in *Standard Seawater*, according to F. J. Millero et al.,
 Deep Sea Research Part I: Oceanographic Research Papers 55.1 (2008), pp. 50-72.
 
 The C++11 library consists of a simple set of C++ classes that represent
-chemical elements, element mass fractions, number of atoms, molecules, and
-mixture. These classes can be used for creating a seawater material for
+chemical elements, element mass fractions, numbers of atoms, molecules, and
+mixtures. These classes can be used for creating a seawater material for
 detector simulations with e.g. `Geant4`_.
 
 This project also provides a Python interface to the C++ library.
