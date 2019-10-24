@@ -111,20 +111,6 @@ class MassFraction
         void CheckValue();
 };
 
-/// Addition assignment of two mass fractions
-// inline MassFraction& operator+=(MassFraction& left, const MassFraction& right)
-// {
-//     left.SetValue(left.GetValue() + right.GetValue());
-//     return left;
-// }
-
-/// Multiplication assignment of scale and mass fraction
-// inline MassFraction& operator*=(MassFraction& fraction, double scale)
-// {
-//     fraction.SetValue(scale * fraction.GetValue());
-//     return fraction;
-// }
-
 //---Element to mass fraction mapping------------------------------------------
 
 /// Mapping of chemical elements to mass fractions
