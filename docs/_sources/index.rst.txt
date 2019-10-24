@@ -1,5 +1,8 @@
 .. seawater documentation master file
 
+Standard Seawater
+=================
+
 .. include:: ../../README.rst
    :start-after: documentation start
    :end-before: documentation stop

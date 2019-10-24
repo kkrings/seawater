@@ -3,8 +3,36 @@
 Seawater composition
 ====================
 
-This page exemplary shows how to calculate the composition of seawater given a
-practical salinity by using both the project's C++ and the Python interface,
+The composition of seawater is based on the six most important (by reference
+salinity :math:`S_{R}`) materials dissolved in *Standard Seawater*, according
+to [Millero2008]_:
+
+.. table::
+
+   ========= ================== ============================
+   Material  Reference salinity Most abundant compound
+   ========= ================== ============================
+   Sodium    10.78145           :math:`\mathrm{N}^{+}`
+   Magnesium  1.28372           :math:`\mathrm{Mg}^{2+}`
+   Calcium    0.41208           :math:`\mathrm{Ca}^{2+}`
+   Potassium  0.39910           :math:`\mathrm{K}^{+}`
+   Chlorine  19.35271           :math:`\mathrm{Cl}^{-}`
+   Sulfate    2.71235           :math:`\mathrm{SO}_{4}^{2-}`
+   ========= ================== ============================
+
+After correcting for the missing materials via renormalization, the element
+mass fractions are scaled by
+
+.. math::
+
+   S_{R} = S_{P} \times 35.16504/35,
+
+where :math:`S_{P}` is the practical salinity of the ocean site of interest,
+and combined with :math:`1 - S_{R}` of pure water.
+
+
+The following examples show how to calculate the composition of seawater given
+a practical salinity by using both the project's C++ and the Python interface,
 respectively.
 
 .. note::
@@ -32,8 +60,8 @@ by using the function :cpp:func:`seawater::GetSeaWater`:
    #include <iomanip>
    #include <iostream>
 
-   #include "seawater/element.h"
-   #include "seawater/seawater.h"
+   #include <seawater/element.h>
+   #include <seawater/seawater.h>
 
    int main()
    {
@@ -107,3 +135,8 @@ the :func:`pyseawater.seawater` function:
                atoms=fraction * weight / element.weight
                )
            )
+
+
+.. [Millero2008]
+   F. J. Millero et al., Deep Sea Research Part I: Oceanographic Research
+   Papers 55.1 (2008), pp. 50-72.

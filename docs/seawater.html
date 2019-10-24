@@ -45,8 +45,7 @@
 <dl class="type">
 <dt id="_CPPv4N8seawater13MassFractionsE">
 <span id="_CPPv3N8seawater13MassFractionsE"></span><span id="_CPPv2N8seawater13MassFractionsE"></span><span class="target" id="massfraction_8h_1ac3854d96899399a9f126bf8716c91b95"></span><em class="property">using </em><code class="descname">MassFractions</code> = std::map&lt;<a class="reference internal" href="#_CPPv4N8seawater7ElementE" title="seawater::Element">Element</a>, <a class="reference internal" href="#_CPPv4N8seawater12MassFractionE" title="seawater::MassFraction">MassFraction</a>&gt;<a class="headerlink" href="#_CPPv4N8seawater13MassFractionsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Addition assignment of two mass fractions. </p>
-<p>Multiplication assignment of scale and mass fraction Mapping of chemical elements to mass fractions </p>
+<dd><p>Mapping of chemical elements to mass fractions. </p>
 </dd></dl>
 
 <dl class="type">
@@ -166,12 +165,6 @@
 <span id="_CPPv3N8seawater11GetSeaWaterEdd"></span><span id="_CPPv2N8seawater11GetSeaWaterEdd"></span><span id="seawater::GetSeaWater__double.double"></span><span class="target" id="seawater_8h_1a72d6388fe2100673b78500e143cba6d2"></span><a class="reference internal" href="#_CPPv4N8seawater6MediumE" title="seawater::Medium">Medium</a> <code class="descname">GetSeaWater</code><span class="sig-paren">(</span>double <em>practicalSalinity</em> = 35e-3, double <em>massDensity</em> = 1.<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8seawater11GetSeaWaterEdd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Seawater. </p>
 <p>Construct seawater as a propagation medium given the practical salinity of the ocean site of interest.</p>
-<p>Only the six most important (by reference salinity) materials dissolved in Standard Seawater are taken into account, according to F. J. Millero et al., Deep Sea Research Part I: Oceanographic Research Papers 55.1 (2008), pp. 50-72. These materials are sodium, magnesium, calcium, potassium, chlorine, and sulfate ions and will be referred to as salt.</p>
-<p>After correcting for the missing materials dissolved in Standard Seawater via renormalization, the element mass fractions of salt are scaled by</p>
-<p><div class="math notranslate nohighlight">
-\[ S_{R} = S_{P} \times 35.16504/35, \]</div>
-</p>
-<p>where <span class="math notranslate nohighlight">\(S_{P}\)</span> is the practical salinity of the ocean site of interest, and combined with <span class="math notranslate nohighlight">\(1 - S_{R}\)</span> of pure water.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>Seawater </dd>

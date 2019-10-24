@@ -22,22 +22,6 @@ namespace seawater {
  * Construct seawater as a propagation medium given the practical salinity of
  * the ocean site of interest.
  *
- * Only the six most important (by reference salinity) materials dissolved in
- * Standard Seawater are taken into account, according to F. J. Millero et al.,
- * Deep Sea Research Part I: Oceanographic Research Papers 55.1 (2008), pp.
- * 50-72. These materials are sodium, magnesium, calcium, potassium, chlorine,
- * and sulfate ions and will be referred to as salt.
- *
- * After correcting for the missing materials dissolved in Standard Seawater
- * via renormalization, the element mass fractions of salt are scaled by
- *
- * @f[
- *     S_{R} = S_{P} \times 35.16504/35,
- * @f]
- *
- * where @f$S_{P}@f$ is the practical salinity of the ocean site of interest,
- * and combined with @f$1 - S_{R}@f$ of pure water.
- *
  * @param[in] practicalSalinity
  *     Practical salinity
  * @param[in] massDensity

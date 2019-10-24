@@ -37,8 +37,56 @@
             
   <div class="section" id="seawater-composition">
 <span id="composition"></span><h1>Seawater composition<a class="headerlink" href="#seawater-composition" title="Permalink to this headline">¶</a></h1>
-<p>This page exemplary shows how to calculate the composition of seawater given a
-practical salinity by using both the project’s C++ and the Python interface,
+<p>The composition of seawater is based on the six most important (by reference
+salinity <span class="math notranslate nohighlight">\(S_{R}\)</span>) materials dissolved in <em>Standard Seawater</em>, according
+to <a class="reference internal" href="#millero2008" id="id1">[Millero2008]</a>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="33%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Material</th>
+<th class="head">Reference salinity</th>
+<th class="head">Most abundant compound</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Sodium</td>
+<td>10.78145</td>
+<td><span class="math notranslate nohighlight">\(\mathrm{N}^{+}\)</span></td>
+</tr>
+<tr class="row-odd"><td>Magnesium</td>
+<td>1.28372</td>
+<td><span class="math notranslate nohighlight">\(\mathrm{Mg}^{2+}\)</span></td>
+</tr>
+<tr class="row-even"><td>Calcium</td>
+<td>0.41208</td>
+<td><span class="math notranslate nohighlight">\(\mathrm{Ca}^{2+}\)</span></td>
+</tr>
+<tr class="row-odd"><td>Potassium</td>
+<td>0.39910</td>
+<td><span class="math notranslate nohighlight">\(\mathrm{K}^{+}\)</span></td>
+</tr>
+<tr class="row-even"><td>Chlorine</td>
+<td>19.35271</td>
+<td><span class="math notranslate nohighlight">\(\mathrm{Cl}^{-}\)</span></td>
+</tr>
+<tr class="row-odd"><td>Sulfate</td>
+<td>2.71235</td>
+<td><span class="math notranslate nohighlight">\(\mathrm{SO}_{4}^{2-}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>After correcting for the missing materials via renormalization, the element
+mass fractions are scaled by</p>
+<div class="math notranslate nohighlight">
+\[S_{R} = S_{P} \times 35.16504/35,\]</div>
+<p>where <span class="math notranslate nohighlight">\(S_{P}\)</span> is the practical salinity of the ocean site of interest,
+and combined with <span class="math notranslate nohighlight">\(1 - S_{R}\)</span> of pure water.</p>
+<p>The following examples show how to calculate the composition of seawater given
+a practical salinity by using both the project’s C++ and the Python interface,
 respectively.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -57,8 +105,8 @@ by using the function <a class="reference internal" href="seawater.html#_CPPv4N8
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;seawater/element.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;seawater/seawater.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;seawater/element.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;seawater/seawater.h&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
@@ -127,6 +175,13 @@ the <a class="reference internal" href="pyseawater.html#pyseawater.seawater" tit
         <span class="p">)</span>
 </pre></div>
 </div>
+<table class="docutils citation" frame="void" id="millero2008" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Millero2008]</a></td><td>F. J. Millero et al., Deep Sea Research Part I: Oceanographic Research
+Papers 55.1 (2008), pp. 50-72.</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 
