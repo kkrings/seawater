@@ -20,3 +20,13 @@ configure_file(
 	conf.py.in
 	conf.py
 	)
+
+# Add target for building the HTML documentation.
+add_custom_target(
+	docs
+	COMMAND sphinx-build -c . ${CMAKE_CURRENT_SOURCE_DIR} html
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	COMMENT "Generating HTML documentation"
+	)
+
+add_dependencies(docs pyseawater doxygen)
