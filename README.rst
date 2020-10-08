@@ -1,8 +1,8 @@
 Standard Seawater
 =================
 
-.. image:: https://travis-ci.org/kkrings/seawater.svg?branch=master
-   :target: https://travis-ci.org/kkrings/seawater
+.. image:: https://travis-ci.com/kkrings/seawater.svg?branch=master
+   :target: https://travis-ci.com/kkrings/seawater
 
 .. documentation start
 

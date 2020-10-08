@@ -1,0 +1,9 @@
+language: cpp
+dist: bionic
+install:
+    - sudo apt-get install -y libboost-python-dev
+script:
+    - mkdir build
+    - cd build
+    - cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_PYMODULE=ON -DBUILD_TESTS=ON ..
+    - make tests
